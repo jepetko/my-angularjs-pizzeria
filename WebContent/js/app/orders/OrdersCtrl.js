@@ -30,8 +30,15 @@
 		};
 		
 		this.sendOrder = function() {
-			console.log(Orders);
-			Orders.save(this.bag, function(data) {
+			
+			var order = [];
+			for(var id in this.bag) {
+				var count = parseInt(this.bag[id], 10);
+				var item = { product: { id: id }, count: count };
+				order.push(item);
+			}
+			
+			Orders.save(order, function(data) {
 				console.log(data);
 			});/*
 			.success(function(data) {

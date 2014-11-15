@@ -1,28 +1,20 @@
 package com.ng.rest.shop;
 
+import java.util.List;
+
 public class Order {
+
+	private List<Item> items;
 	
-	private Product p;
-	private int count;
+	public Order(List<Item> items) {
+		this.items = items;
+	}
 	
-	Order(Product p, int count) {
-		this.p =  p;
-		this.count = count;
+	public List<Item> getItems() {
+		return items;
 	}
-
-	public Product getP() {
-		return p;
-	}
-
-	public void setP(Product p) {
-		this.p = p;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
+	
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 }
