@@ -14,7 +14,7 @@ describe('address-app directives', function() {
 		var component = link($scope);
 		$scope.$digest();
 		return component;
-	}
+	};
 	
 	beforeEach(module('address-app'));
 	beforeEach(inject(function(_$rootScope_, _$compile_) {

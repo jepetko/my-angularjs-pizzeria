@@ -9,8 +9,7 @@ describe("ProductsFactory", function() {
 		httpBackend = $httpBackend;
 		myProductsFactory = ProductsFactory;
 		
-		httpBackend.whenGET('shop/products').respond(200,
- 				[ {
+		httpBackend.whenGET('shop/products').respond(200, [ {
 			"id" : 1,
 			"name" : "Margharita",
 			"price" : 5.0

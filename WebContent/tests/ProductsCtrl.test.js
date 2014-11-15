@@ -17,8 +17,7 @@ describe("products-ctrl", function() {
 		filter = $filter;
 		_BagService = BagService;
 		
-		httpBackend.whenGET('shop/products').respond(200,
- 				[ {
+		httpBackend.whenGET('shop/products').respond(200, [ {
 			"id" : 1,
 			"name" : "Margharita",
 			"price" : 5.0

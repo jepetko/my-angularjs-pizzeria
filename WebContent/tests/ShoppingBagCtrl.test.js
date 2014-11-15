@@ -13,17 +13,15 @@ describe('shoppingbag-app', function() {
 			'ProductsFactory': ProductsFactory
 		});
 		httpBackend = $httpBackend;
-		httpBackend.whenGET('shop/products').respond(200,
- 				[ {
- 					"id" : 1,
- 					"name" : "Margharita",
- 					"price" : 5.0
- 				}, {
- 					"id" : 2,
- 					"name" : "Cardinale",
- 					"price" : 6.5
- 				}
- 				]);
+		httpBackend.whenGET('shop/products').respond(200, [ {
+					"id" : 1,
+					"name" : "Margharita",
+					"price" : 5.0
+				}, {
+					"id" : 2,
+					"name" : "Cardinale",
+					"price" : 6.5
+				}]);
 		_BagService = BagService;
 	}));
 	

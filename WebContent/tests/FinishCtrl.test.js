@@ -14,8 +14,7 @@ describe('finish-app', function() {
 		_BagService = BagService;
 		_ProductsFactory = ProductsFactory;
 		
-		_$httpBackend_.whenGET('shop/products').respond(200,
- 				[ {
+		_$httpBackend_.whenGET('shop/products').respond(200, [ {
 			"id" : 1,
 			"name" : "Margharita",
 			"price" : 5.0
@@ -32,7 +31,7 @@ describe('finish-app', function() {
 		
 		it('should print a hint if the bag is empty', function() {
 			$httpBackend.flush();
-			expect($scope.getMessage()).toEqual('Your bag is empty. Please add some pizzas to your bag.')
+			expect($scope.getMessage()).toEqual('Your bag is empty. Please add some pizzas to your bag.');
 		});
 		
 		it('should return message to the user including the order summary', function() {
@@ -41,7 +40,7 @@ describe('finish-app', function() {
 			_BagService.bag['1'] = 3;
 			_BagService.bag['2'] = 5;
 			
-			expect($scope.getMessage()).toEqual('Thank you for your order. Here is the summary: 3x Margharita, 5x Cardinale.')			
+			expect($scope.getMessage()).toEqual('Thank you for your order. Here is the summary: 3x Margharita, 5x Cardinale.');			
 		});
 	});
 });
