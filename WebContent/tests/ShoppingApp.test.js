@@ -1,12 +1,13 @@
 describe('shopping-app', function() {
 	
-	var rootScope, route, location;
+	var rootScope, route, location, httpBackend;
 	
 	beforeEach(module('shopping-app'));
-	beforeEach(inject(function($rootScope, $route, $location) {
+	beforeEach(inject(function($rootScope, $route, $location, $httpBackend) {
 		rootScope = $rootScope;
 		route = $route;
 		location = $location;
+		httpBackend = $httpBackend;
 	}));
 	
 	describe('shopping-app', function() {
@@ -17,13 +18,15 @@ describe('shopping-app', function() {
 			expect(route.routes['/address'].templateUrl).toEqual('templates/address.html');
 			expect(route.routes['/finish'].templateUrl).toEqual('templates/finish.html');
 			
-			//otherwise:
-			expect(route.routes[null].redirectTo).toEqual('templates/products.html');
+			//otherwise:			
+			expect(route.routes[null].redirectTo).toEqual('/select');
 			
-			//otherwise
+			//otherwise 2: real routing
+	        httpBackend.expectGET('templates/products.html').respond(200);
+	        
 			location.path('/not/valid');
 			rootScope.$digest();
-			expect(location.path().substring(1)).toEqual('templates/products.html');
+			expect(location.path()).toEqual('/select');
 		});		
 	});
 	

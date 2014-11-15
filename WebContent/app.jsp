@@ -23,6 +23,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>My Awesome Pizzeria</title>
+				
 		<script src="js/jquery-1.11.1.min.js"></script>				    
 		<script src="js/angular.js"></script>
 		<script src="js/angular-resource.js"></script>	
@@ -40,8 +41,7 @@
 		<script src="js/app/shopping/AddressCtrl.js"></script>			
 		<script src="js/app/shopping/FinishCtrl.js"></script>
 		
-		<script src="js/app/application.js"></script>		
-			
+		<script src="js/app/application.js"></script>
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -70,13 +70,16 @@
 		    </div>
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav navbar-right" data-ng-controller="UsersController" data-ng-init="init('<%=login%>', '<%=sessID%>')">
-		        <li><a href="#">{{currentUser}}</a></li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User: {{currentUser}} <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
-		            <li><a href="#">My Orders</a></li>
+		            <li>
+		            	<a href="#">My Orders</a>
+		            </li>
 		            <li class="divider"></li>
-		            <li><a href="#">Logout</a></li>
+		            <li>
+		            	<a href="<%=response.encodeURL("LogoutServlet") %>">Logout</a>
+		            </li>
 		          </ul>
 		        </li>
 		      </ul>
