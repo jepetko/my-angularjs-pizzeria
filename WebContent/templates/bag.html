@@ -1,0 +1,28 @@
+<div data-ng-controller="ShoppingBagCtrl" data-ng-init="init()">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th class="r-a">Price</th>			
+				<th class="r-a">Count</th>
+				<th class="r-a">Total</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="(id,count) in bag">
+				<td>{{getProductById(id).name}}</td>
+				<td class="r-a">{{getProductById(id).price}} &euro;</td>			
+				<td class="r-a"><span class="badge">{{count}}</span></td>
+				<td class="r-a">{{getTotal(id)}} &euro;</td>				
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>Grand Total</td>
+				<td class="r-a"></td>			
+				<td class="r-a"></td>
+				<td class="r-a">{{getGrandTotal()}} &euro;</td>				
+			</tr>
+		</tfoot>		
+ 	</table>
+</div>

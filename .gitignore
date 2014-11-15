@@ -1,0 +1,9 @@
+.project
+.classpath
+build
+.settings
+.tern-project
+runner/node_modules
+runner/npm-debug.log
+tasks/node_modules
+tasks/npm-debug.log
