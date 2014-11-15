@@ -61,7 +61,7 @@
 				<div data-ng-controller="UsersController" data-ng-init="init('<%=login%>', '<%=sessID%>')">
 			{{currentUser}}
 		</div>	
-			<div class="panel-heading">Awesome pizzeria shop</div>
+		<div class="panel-heading">Awesome pizzeria shop</div>
 			<div class="panel-body">
 				<wizard></wizard>
 				<ng-view></ng-view>
