@@ -2,22 +2,10 @@
 	
 	"use strict";
 		
-	angular.module('shoppingbag-app',['products-services'])
-	.service('BagService', function() {
-		this.bag = {};
-		this.getBag = function() {
-			return this.bag;
-		};
-		this.isEmpty = function() {
-			for(var key in this.bag) {
-				return false;
-			}
-			return true;
-		};
-	})
-	.controller('ShoppingBagCtrl', ['$scope', 'BagService', 'ProductsFactory', function($scope, BagService, ProductsFactory) {
+	angular.module('shoppingbag-app',['products-services', 'orders-app'])
+	.controller('ShoppingBagCtrl', ['$scope', 'OrderService', 'ProductsFactory', function($scope, OrderService, ProductsFactory) {
 		
-		$scope.bag = BagService.getBag();
+		$scope.bag = OrderService.getBag();
 		
 		/**
 		 * query all products in order to display product name and price

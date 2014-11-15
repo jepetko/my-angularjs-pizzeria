@@ -1,11 +1,11 @@
 (function() {
 	"use strict";
 	
-	angular.module('finish-app', ['shoppingbag-app'])
-	.controller('FinishCtrl', ['$scope', 'BagService', 'ProductsFactory', function($scope, BagService, ProductsFactory) {
+	angular.module('finish-app', ['shoppingbag-app', 'orders-app'])
+	.controller('FinishCtrl', ['$scope', 'OrderService', 'ProductsFactory', function($scope, OrderService, ProductsFactory) {
 		
 		$scope.products = [];
-		$scope.bag = BagService.getBag();
+		$scope.bag = OrderService.getBag();
 		
 		$scope.all = function() {
 			return ProductsFactory.query(function(data) {
@@ -25,11 +25,11 @@
 		};
 		
 		$scope.getMessage = function() {
-			if(BagService.isEmpty()) {
+			if(OrderService.isEmpty()) {
 				return 'Your bag is empty. Please add some pizzas to your bag.';
 			}
 			var msg = 'Thank you for your order. Here is the summary: ';
-			var bag = BagService.getBag();
+			var bag = OrderService.getBag();
 			var i=0;
 			for(var itm in bag) {
 				if(i>0) {

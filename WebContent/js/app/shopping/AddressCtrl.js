@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 	
-	angular.module('address-app',[])
+	angular.module('address-app',['ngResource', 'orders-app'])
 	.directive('validcreditcard', function() {
 		return {
 			scope: '=',
@@ -29,10 +29,7 @@
 				});		
 			}
 		};	
-	})
-	.service('OrderService', [function() {
-		this.address = {};
-	}])
+	})	
 	.controller('AddressCtrl', ['$scope', '$location', 'OrderService', function($scope, $location, OrderService) {	
 		$scope.address = OrderService.address;
 		$scope.payments = ['VISA', 'MasterCard', 'Diners', 'Cash'];
@@ -44,7 +41,7 @@
 			return p != 'Cash';
 		};
 		$scope.submit = function() {
-			//todo: send to the server
+			OrderService.sendOrder();
 			//http://stackoverflow.com/questions/14301524/in-angular-how-to-redirect-with-location-path-as-http-post-success-callback
 			$location.path('/finish');
 		};

@@ -41,6 +41,8 @@
 		<script src="js/app/shopping/AddressCtrl.js"></script>			
 		<script src="js/app/shopping/FinishCtrl.js"></script>
 		
+		<script src="js/app/orders/OrdersCtrl.js"></script>		
+		
 		<script src="js/app/application.js"></script>
 		
 		<!-- Latest compiled and minified CSS -->
@@ -66,7 +68,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="#">My Awesome Pizzeria</a>
+		      <span class="navbar-brand">My Awesome Pizzeria</span>
 		    </div>
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav navbar-right" data-ng-controller="UsersController" data-ng-init="init('<%=login%>', '<%=sessID%>')">
@@ -88,7 +90,7 @@
 		</nav>
 			
 		<div class="panel panel-default">
-			<div class="panel-heading">Awesome pizzeria shop</div>
+			<div class="panel-heading">Please, use this wizard to order some pizzas.</div>
 			<div class="panel-body">
 				<wizard></wizard>
 				<ng-view></ng-view>

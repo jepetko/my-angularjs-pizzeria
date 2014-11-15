@@ -1,17 +1,17 @@
 describe('finish-app', function() {
 	
-	var $scope, ctrl, $httpBackend, _BagService, _ProductsFactory;
+	var $scope, ctrl, $httpBackend, _OrderService, _ProductsFactory;
 	
 	beforeEach(module('finish-app'));
 	
-	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, BagService, ProductsFactory) {
+	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, OrderService, ProductsFactory) {
 		$scope = $rootScope.$new();
 		ctrl = $controller('FinishCtrl', {
 			'$scope' : $scope,
-			'BagService': BagService,
+			'OrderService': OrderService,
 			'ProductsFactory' : ProductsFactory
 		});
-		_BagService = BagService;
+		_OrderService = OrderService;
 		_ProductsFactory = ProductsFactory;
 		
 		_$httpBackend_.whenGET('shop/products').respond(200, [ {
@@ -37,8 +37,8 @@ describe('finish-app', function() {
 		it('should return message to the user including the order summary', function() {
 			
 			$httpBackend.flush();
-			_BagService.bag['1'] = 3;
-			_BagService.bag['2'] = 5;
+			_OrderService.bag['1'] = 3;
+			_OrderService.bag['2'] = 5;
 			
 			expect($scope.getMessage()).toEqual('Thank you for your order. Here is the summary: 3x Margharita, 5x Cardinale.');			
 		});

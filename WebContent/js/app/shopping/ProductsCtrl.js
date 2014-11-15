@@ -7,10 +7,10 @@
 			return input.replace(/\s+/g, '');
 		};
 	})
-	.controller('ProductsCtrl', ['$scope', 'ProductsFactory', 'BagService', function($scope, ProductsFactory, BagService) {
+	.controller('ProductsCtrl', ['$scope', 'ProductsFactory', 'OrderService', function($scope, ProductsFactory, OrderService) {
 		
 		$scope.products = [];
-		$scope.bag = BagService.getBag();
+		$scope.bag = OrderService.getBag();
 		
 		$scope.all = function() {
 			return ProductsFactory.query(function(data) {

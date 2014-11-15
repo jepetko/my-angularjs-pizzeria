@@ -1,16 +1,21 @@
 describe('address-app', function() {
 	
-	var rootScope, scope, httpBackend, element, location;
+	var rootScope, scope, httpBackend, element, location, httpBackend;
+	var MyOrderService;
 		
 	beforeEach(module('address-app'));	
 	beforeEach(module('templates/address.html'));
 	
-	beforeEach(inject(function($rootScope, $controller, $compile, $templateCache, $location) {
+	beforeEach(inject(function($rootScope, $controller, $compile, $templateCache, $location, $httpBackend, OrderService) {
 		var template = $templateCache.get('templates/address.html');
 		var link = $compile(template);
 		element = link($rootScope.$new());
 		scope = angular.element(element).scope();
 		location = $location;
+		MyOrderService = OrderService;
+		
+		httpBackend = $httpBackend;
+		httpBackend.whenGET('shop/orders').respond(200, [{}]);
 	}));
 	
 	describe('AddressCtrl', function() {		
@@ -51,6 +56,21 @@ describe('address-app', function() {
 			scope.$digest();
 			var hint = $(element).find('span').first();
 			expect(hint.css('display')).not.toBe('none');
+		});
+		
+		it('should send the order to the server', function() {
+			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'Cash'};
+			angular.forEach(address, function(val,key) {
+				scope.addressForm[key].$setViewValue(val);
+			});
+			scope.$digest();			
+			scope.submit();
+			httpBackend.flush();
+			expect(MyOrderService.getPendingOrders().length).toBe(1);
+			
+			var order = MyOrderService.getPendingOrders()[0];
+			expect(order.address).toEqual(jasmine.objectContaining( address ));
+			expect(order.products).toEqual(jasmine.objectContaining( { name: 'Margharita', count: 3 } ));
 		});
 		
 		it('should route to the last tab when form is submitted', function() {
