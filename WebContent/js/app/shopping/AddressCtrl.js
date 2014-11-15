@@ -30,8 +30,11 @@
 			}
 		};	
 	})
-	.controller('AddressCtrl', ['$scope', '$location', function($scope, $location) {		
-		$scope.address = {};
+	.service('OrderService', [function() {
+		this.address = {};
+	}])
+	.controller('AddressCtrl', ['$scope', '$location', 'OrderService', function($scope, $location, OrderService) {	
+		$scope.address = OrderService.address;
 		$scope.payments = ['VISA', 'MasterCard', 'Diners', 'Cash'];
 		$scope.creditCardSelected = function() {
 			if(!$scope.address.payment) {

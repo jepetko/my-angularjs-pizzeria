@@ -17,13 +17,14 @@ module.exports = function(config) {
             'js/angular-resource.js',
             'js/angular-route.js',
             'js/angular-mocks.js',
+            'js/angular-cookies.js',
             'js/jquery-1.11.1.min.js',
             
             //source code:            
-            'js/**/*.js',
+            'js/app/**/*.js',
             
             //tests:
-            'tests/app/*.test.js',
+            'tests/*.test.js',
             
             //templates:
             'templates/*.html'
