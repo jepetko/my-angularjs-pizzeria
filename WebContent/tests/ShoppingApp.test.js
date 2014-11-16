@@ -17,6 +17,7 @@ describe('shopping-app', function() {
 			expect(route.routes['/bag'].templateUrl).toEqual('templates/bag.html');	
 			expect(route.routes['/address'].templateUrl).toEqual('templates/address.html');
 			expect(route.routes['/finish'].templateUrl).toEqual('templates/finish.html');
+			expect(route.routes['/orders'].templateUrl).toEqual('templates/orders.html');
 			
 			//otherwise:			
 			expect(route.routes[null].redirectTo).toEqual('/select');

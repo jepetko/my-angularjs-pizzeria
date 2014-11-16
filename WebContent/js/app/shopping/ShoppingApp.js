@@ -10,6 +10,7 @@
 		.when('/bag', {templateUrl: 'templates/bag.html'})
 		.when('/address', {templateUrl: 'templates/address.html'})
 		.when('/finish', {templateUrl: 'templates/finish.html'})
+		.when('/orders', {templateUrl: 'templates/orders.html'})
 		.otherwise({redirectTo: '/select'});
 		
 		$locationProvider.hashPrefix('!');
