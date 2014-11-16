@@ -6,9 +6,9 @@ import java.util.List;
 public class Order {
 
 	private List<Item> items;
+	private Address address;
 	
-	public Order() {
-		
+	public Order() {		
 	}
 	
 	public Order(List<Item> items) {
@@ -31,4 +31,12 @@ public class Order {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setCustomer(Address address) {
+		this.address = address;
+	}	
 }

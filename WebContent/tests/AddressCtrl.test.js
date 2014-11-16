@@ -15,7 +15,48 @@ describe('address-app', function() {
 		MyOrderService = OrderService;
 		
 		httpBackend = $httpBackend;
-		httpBackend.whenGET('shop/orders').respond(200, [{}]);
+		httpBackend.whenPOST('payment/orders').respond(200, 
+			{
+				items : [ {
+					product : {
+						id : 1,
+						name : 'Margharita',
+						price : 5.50
+					},
+					count : 10
+				} ],
+				address : {
+					firstname : 'Katarina',
+					surname : 'Golbang',
+					street : 'Some Street',
+					no : 3,
+					zip : '1020',
+					city : 'Vienna',
+					payment : 'Cash'
+				}
+			}			
+		);		
+		httpBackend.whenGET('payment/orders').respond(200, 
+			[{
+				items : [ {
+					product : {
+						id : 1,
+						name : 'Margharita',
+						price : 5.50
+					},
+					count : 10
+				} ],
+				address : {
+					firstname : 'Katarina',
+					surname : 'Golbang',
+					street : 'Some Street',
+					no : 3,
+					zip : '1020',
+					city : 'Vienna',
+					payment : 'Cash'
+				}
+			}]				
+		);		
 	}));
 	
 	describe('AddressCtrl', function() {		
@@ -63,14 +104,29 @@ describe('address-app', function() {
 			angular.forEach(address, function(val,key) {
 				scope.addressForm[key].$setViewValue(val);
 			});
-			scope.$digest();			
+			scope.$digest();
+			
+			//add a product to the bag:
+			var bag = MyOrderService.getBag();
+			bag['1'] = 10;
+			
+			//submit the form and flush the server requests
 			scope.submit();
 			httpBackend.flush();
-			expect(MyOrderService.getPendingOrders().length).toBe(1);
 			
-			var order = MyOrderService.getPendingOrders()[0];
+			//get all orders again
+			var orders = MyOrderService.getPendingOrders();
+			httpBackend.flush();
+			
+			//does the order fit the expectations?
+			var order = orders[0];
+			expect(order.items.length).toBe(1);
+						
 			expect(order.address).toEqual(jasmine.objectContaining( address ));
-			expect(order.products).toEqual(jasmine.objectContaining( { name: 'Margharita', count: 3 } ));
+			
+			var item = order.items[0];
+			expect(item.product).toEqual(jasmine.objectContaining( { name: 'Margharita', price: 5.50 } ));
+			expect(item.count).toBe(10);			
 		});
 		
 		it('should route to the last tab when form is submitted', function() {

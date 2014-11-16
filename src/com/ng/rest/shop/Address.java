@@ -1,6 +1,6 @@
 package com.ng.rest.shop;
 
-public class Customer {
+public class Address {
 
 	private String firstName;
 	private String surname;

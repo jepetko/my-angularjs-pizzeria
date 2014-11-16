@@ -22,7 +22,7 @@
 		};
 		
 		this.getPendingOrders = function() {
-			Orders.query( (function(self) {
+			return Orders.query( (function(self) {
 				return function(data) {
 					self.orders = data;
 				}
@@ -37,15 +37,11 @@
 				var item = { product: { id: id }, count: count };
 				items.push(item);
 			}
-			var order = {items : items};
+			var order = {items : items, address: this.address};
 			
 			Orders.save(order, function(data) {
-				console.log(data);
-			});/*
-			.success(function(data) {
-				console.log(data);
-				getPendingOrders();
-			});*/
+				//could do something here
+			});
 		};
 	}]);
 	
