@@ -24,7 +24,6 @@ public class OrderResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")	
 	public Order saveOrder(Order order) {
 		OrderDao.instance.getModel().add(order);
 		return order;

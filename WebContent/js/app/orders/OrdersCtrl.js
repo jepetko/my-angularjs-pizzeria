@@ -3,7 +3,7 @@
 	
 	angular.module('orders-app', [])
 	.factory('Orders', ['$resource', function($resource) {
-		return $resource('shop/orders/:id', null, { save : {method: 'POST'} });
+		return $resource('payment/orders/:id', null, { save : {method: 'POST'} });
 	}])
 	.service('OrderService', ['Orders', function(Orders) {
 		this.address = {};
@@ -31,12 +31,13 @@
 		
 		this.sendOrder = function() {
 			
-			var order = [];
+			var items = [];
 			for(var id in this.bag) {
 				var count = parseInt(this.bag[id], 10);
 				var item = { product: { id: id }, count: count };
-				order.push(item);
+				items.push(item);
 			}
+			var order = {items : items};
 			
 			Orders.save(order, function(data) {
 				console.log(data);
