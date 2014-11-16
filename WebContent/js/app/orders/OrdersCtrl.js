@@ -53,9 +53,12 @@
 				};				
 			})(this));
 		};
+		
+		//initialize orders:
+		this.orders = this.getPendingOrders();
 	}])
 	.controller('OrdersCtrl', ['OrderService', '$scope', function(OrderService, $scope) {
-		$scope.orders = OrderService.getPendingOrders();
+		$scope.orders = OrderService.orders;
 	}]);
 	
 })();

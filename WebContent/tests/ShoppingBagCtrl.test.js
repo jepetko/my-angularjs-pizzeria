@@ -13,6 +13,17 @@ describe('shoppingbag-app', function() {
 			'ProductsFactory': ProductsFactory
 		});
 		httpBackend = $httpBackend;
+		
+		httpBackend.whenGET('payment/orders').respond(200, [ {
+			"items":[
+			         {
+			        	 "product":{"id":1,"name":"Margharita","price":5.0},
+			        	 "count":5
+			         }
+			         ],
+			         "address":{"firstname":"John","surname":"Fox","street":"Street","no":"1","zip":"1020","city":"Vienna","payment":"Cash","creditcard":0},
+			         "date":"16.11.2014,19:20","total":25.0}
+		]);		
 		httpBackend.whenGET('shop/products').respond(200, [ {
 					"id" : 1,
 					"name" : "Margharita",
