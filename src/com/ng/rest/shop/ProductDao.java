@@ -20,4 +20,13 @@ public enum ProductDao {
 	public List<Product> getModel() {
 		return products;
 	}
+	
+	public Product getById(int id) {
+		for(Product p : products) {
+			if(p.getId() == id) {
+				return p;
+			}
+		}
+		return null;
+	}
 }

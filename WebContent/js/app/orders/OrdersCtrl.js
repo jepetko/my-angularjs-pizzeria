@@ -1,14 +1,21 @@
 (function() {
 	"use strict";
 	
-	angular.module('orders-app', [])
+	angular.module('orders-app', ['shared'])
 	.factory('Orders', ['$resource', function($resource) {
 		return $resource('payment/orders/:id', null, { save : {method: 'POST'} });
 	}])
-	.service('OrderService', ['Orders', function(Orders) {
+	.service('OrderService', ['Orders', 'StringUtils', function(Orders, StringUtils) {
 		this.address = {};
 		this.bag = {};
 		this.orders = [];
+		
+		this.cleanUp = function() {
+			if(!this.address.payment) {
+				return;
+			}
+			this.address.payment = StringUtils.trim(this.address.payment);
+		};
 		
 		this.getBag = function() {
 			return this.bag;
@@ -24,12 +31,13 @@
 		this.getPendingOrders = function() {
 			return Orders.query( (function(self) {
 				return function(data) {
-					self.orders = data;
+					self.orders = data;					
 				}
 			})(this) );			
 		};
 		
 		this.sendOrder = function() {
+			this.cleanUp();
 			
 			var items = [];
 			for(var id in this.bag) {
@@ -39,10 +47,15 @@
 			}
 			var order = {items : items, address: this.address};
 			
-			Orders.save(order, function(data) {
-				//could do something here
-			});
+			Orders.save(order, (function(self) {
+				return function(data) {
+					self.getPendingOrders();
+				};				
+			})(this));
 		};
+	}])
+	.controller('OrdersCtrl', ['OrderService', '$scope', function(OrderService, $scope) {
+		$scope.orders = OrderService.getPendingOrders();
 	}]);
 	
 })();

@@ -2,7 +2,7 @@
 	"use strict";
 	
 	angular.module('address-app',['ngResource', 'orders-app'])
-	.directive('validcreditcard', function() {
+	.directive('validcreditcard', ['StringUtils', function(StringUtils) {
 		return {
 			scope: '=',
 			require: 'ngModel',
@@ -18,7 +18,7 @@
 				});				
 				scope.$watch('address.payment', function(val) {
 					if(val) {
-						val = val.replace(/^\s+/g,'').replace(/\s+$/,'');
+						val = StringUtils.trim(val);
 					}
 					if(val === 'Cash') {
 						ctrl.$setValidity('creditcard', true);
@@ -29,15 +29,15 @@
 				});		
 			}
 		};	
-	})	
-	.controller('AddressCtrl', ['$scope', '$location', 'OrderService', function($scope, $location, OrderService) {	
+	}])	
+	.controller('AddressCtrl', ['$scope', '$location', 'OrderService', 'StringUtils', function($scope, $location, OrderService, StringUtils) {	
 		$scope.address = OrderService.address;
 		$scope.payments = ['VISA', 'MasterCard', 'Diners', 'Cash'];
 		$scope.creditCardSelected = function() {
 			if(!$scope.address.payment) {
 				return false;
 			}
-			var p = $scope.address.payment.replace(/^\s+/g,'').replace(/\s+$/,'');
+			var p = StringUtils.trim($scope.address.payment);
 			return p != 'Cash';
 		};
 		$scope.submit = function() {

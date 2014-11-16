@@ -14,5 +14,10 @@
 		.otherwise({redirectTo: '/select'});
 		
 		$locationProvider.hashPrefix('!');
-	}]);	
+	}])
+	.controller('AppCtrl', ['$scope', 'OrderService', function($scope, OrderService) {		
+		$scope.getOrderCount = function() {
+			return OrderService.orders.length;
+		};
+	}]);
 })();

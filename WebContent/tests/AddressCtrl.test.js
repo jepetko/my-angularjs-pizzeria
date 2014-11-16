@@ -40,11 +40,13 @@ describe('address-app', function() {
 			[{
 				items : [ {
 					product : {
-						id : 1,
+						id : 2,
 						name : 'Margharita',
 						price : 5.50
 					},
-					count : 10
+					count : 10,
+					date: '16.11.2014 12:25',
+					total: 55.0
 				} ],
 				address : {
 					firstname : 'Katarina',
@@ -126,7 +128,9 @@ describe('address-app', function() {
 			
 			var item = order.items[0];
 			expect(item.product).toEqual(jasmine.objectContaining( { name: 'Margharita', price: 5.50 } ));
-			expect(item.count).toBe(10);			
+			expect(item.count).toBe(10);	
+			expect(item.date).toBe('16.11.2014 12:25');		
+			expect(item.total).toBe(55);
 		});
 		
 		it('should route to the last tab when form is submitted', function() {

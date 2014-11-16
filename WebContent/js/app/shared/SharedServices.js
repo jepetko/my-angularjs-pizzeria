@@ -8,4 +8,12 @@ angular.module('shared', ['ngCookies'])
 	this.get = function(name) {
 		return $cookies[name];
 	}
+}])
+.service('StringUtils', [function() {
+	this.trim = function(str) {
+		if(!str) {
+			return '';
+		}
+		return str.replace(/^\s+/g,'').replace(/\s+$/,'');
+	};
 }]);

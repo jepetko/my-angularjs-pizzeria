@@ -1,0 +1,19 @@
+<div data-ng-controller="OrdersCtrl" data-ng-init="init()">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th class="r-a">Date</th>										
+				<th class="r-a">Summary</th>
+				<th class="r-a">Amount</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="o in orders">
+				<td>{{o.date}}</td>
+				<td>summary comes here</td>
+				<td class="r-a">{{o.total}} &euro;</td>				
+			</tr>
+		</tbody>	
+ 	</table>
+</div>

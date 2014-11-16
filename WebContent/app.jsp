@@ -85,10 +85,10 @@
 		  </div><!-- /.container-fluid -->
 		</nav>
 			
-		<div class="panel panel-default">
+		<div class="panel panel-default" data-ng-controller="AppCtrl">
 			<div class="panel-heading">Please, use this wizard to order some pizzas.</div>
 			<div class="panel-body">
-				<wizard></wizard>
+				<wizard c="getOrderCount()"></wizard>
 				<ng-view></ng-view>
 			</div>
 		</div>

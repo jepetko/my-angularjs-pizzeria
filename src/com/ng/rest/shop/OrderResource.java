@@ -25,7 +25,7 @@ public class OrderResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Order saveOrder(Order order) {
-		OrderDao.instance.getModel().add(order);
+		OrderDao.instance.addOrder(order);
 		return order;
 	}
 }
