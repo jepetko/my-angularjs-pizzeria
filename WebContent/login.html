@@ -9,7 +9,7 @@
 		<script src="js/angular.js"></script>
 		<script src="js/angular-gettext.js"></script>	
 		<script src="js/app/login.js"></script>		
-		
+		<script src="js/app/translations.js"></script>		
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -31,14 +31,14 @@
 				<div class=" col-xs-10 col-md-4">
 					<form role="form" action="login" method="POST">
 						<div class="form-group">
-							<label for="the_login" data-translate>Email address</label> 
+							<label for="the_login" data-translate>Login</label> 
 							<input type="text" class="form-control" name="login" id="the_login" placeholder="{{'Login' | translate}}">
 						</div>
 						<div class="form-group">
 							<label for="the_password" data-translate>Password</label> 
 							<input type="password" class="form-control" name="password" id="the_password" placeholder="{{'Password' | translate}}">
 						</div>
-						<input type="submit" class="btn btn-primary btn-lg btn-block" value="{{'Submit' | translate}}" />						
+						<input type="submit" class="btn btn-primary btn-lg btn-block" value="{{'Go!' | translate}}" />						
 					</form>
 				</div>
 				<div class="col-xs-1 col-md-4">

@@ -27,13 +27,30 @@ module.exports = function (grunt) {
                 files: '<%= jshint.src.src %>',
                 tasks: ['jshint:src']
             }
-        }
+        },
+        nggettext_extract: {
+			pot: {
+				files: {
+				    'po/template.pot': ['../WebContent/*.html', '../WebContent/*.jsp', '../WebContent/templates/*.html']
+				}
+			}
+        },
+		nggettext_compile: {
+			all: {
+				files: {
+					'../WebContent/js/app/translations.js': ['po/de.po']
+				}
+			}
+		}
     });
 
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-angular-gettext');
 
     // Default task.
     grunt.registerTask('default', ['jshint']);
+    grunt.registerTask('extract', ['nggettext_extract']);
+    grunt.registerTask('compile', ['nggettext_compile']);    
 };
