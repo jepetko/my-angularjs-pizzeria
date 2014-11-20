@@ -64,20 +64,20 @@
 		  <div class="container-fluid">
 		    <div class="navbar-header">
 		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
+		        <span class="sr-only" data-translate>Toggle navigation</span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <span class="navbar-brand">My Awesome Pizzeria</span>
+		      <span class="navbar-brand" data-translate>My Awesome Pizzeria</span>
 		    </div>
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav navbar-right" data-ng-controller="UsersController" data-ng-init="init('<%=login%>', '<%=sessID%>')">
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User: {{currentUser}} <span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'User' | translate}}: {{currentUser}} <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
 		            <li>
-		            	<a href="<%=response.encodeURL("LogoutServlet") %>">Logout</a>
+		            	<a href="<%=response.encodeURL("LogoutServlet") %>" data-translate>Logout</a>
 		            </li>
 		          </ul>
 		        </li>
@@ -87,7 +87,7 @@
 		</nav>
 			
 		<div class="panel panel-default" data-ng-controller="AppCtrl">		
-			<div class="panel-heading">Please, use this wizard to order some pizzas.</div>
+			<div class="panel-heading" data-translate>Please, use this wizard to order some pizzas.</div>
 			<div class="panel-body">
 				<wizard c="getOrderCount()"></wizard>
 				<ng-view></ng-view>

@@ -1,20 +1,20 @@
 <form name="addressForm" ng-controller="AddressCtrl" ng-submit="submit()" class="form-horizontal" role="form">
 	<div class="form-group">
-		<label for="firstname" class="col-sm-2 control-label">First name</label>
+		<label for="firstname" class="col-sm-2 control-label" data-translate>First name</label>
 		<div class="col-sm-6 has-feedback">
 			<input class="form-control" ng-model="address.firstname" name="firstname" required>
 			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="addressForm.$dirty && addressForm.firstname.$valid"></span>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="surname" class="col-sm-2 control-label">Surname</label>
+		<label for="surname" class="col-sm-2 control-label" data-translate>Surname</label>
 		<div class="col-sm-6 has-feedback">
 			<input class="form-control" ng-model="address.surname" name="surname" required>
 			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="addressForm.$dirty && addressForm.surname.$valid"></span>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="street" class="col-xs-12 col-sm-2 control-label">Street / No.</label>
+		<label for="street" class="col-xs-12 col-sm-2 control-label" data-translate>Street / No.</label>
 		<div class="col-xs-10 col-sm-4 has-feedback">
 			<input class="form-control" ng-model="address.street" name="street" required>
 			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="addressForm.$dirty && addressForm.street.$valid"></span>
@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="zip" class="col-xs-12 col-sm-2 control-label">ZIP / City</label>
+		<label for="zip" class="col-xs-12 col-sm-2 control-label" data-translate>ZIP / City</label>
 		<div class="col-xs-4 col-sm-2 has-feedback">
 			<input class="form-control" ng-model="address.zip" name="zip" required>
 			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="addressForm.$dirty && addressForm.zip.$valid"></span>			
@@ -36,23 +36,23 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="payment" class="col-xs-12 col-sm-2 control-label">Your payment method</label>
+		<label for="payment" class="col-xs-12 col-sm-2 control-label" data-translate>Your payment method</label>
 		<div class="col-xs-8 col-sm-4 has-feedback">		
 			<select class="form-control" ng-model="address.payment" name="payment" required>
 				<option ng-repeat="pt in payments">
-					{{pt}}
+					{{pt | translate}}
 				</option>
 			</select>
 			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="addressForm.$dirty && addressForm.payment.$valid"></span>			
 		</div>
-		<div class="col-xs-4 col-sm-2 has-feedback">				
+		<div class="col-xs-4 col-sm-2 has-feedback">
 			<input class="form-control" type="text" ng-model="address.creditcard" name="creditcard" ng-show="creditCardSelected()" validcreditcard>
 			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="creditCardSelected() && addressForm.creditcard.$dirty && addressForm.creditcard.$valid"></span>			
 		</div>			
 	</div>	
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-default" ng-disabled="addressForm.$invalid">Done!</button>
+			<button type="submit" class="btn btn-default" ng-disabled="addressForm.$invalid" data-translate>Done!</button>
 		</div>
 	</div>
 	    <pre>{{addressForm.$error|json}}</pre>

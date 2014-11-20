@@ -15,6 +15,10 @@
 		
 		$locationProvider.hashPrefix('!');
 	}])
+	.run(function(gettextCatalog) {
+		gettextCatalog.setCurrentLanguage('de');
+	    gettextCatalog.debug = true;		
+	})
 	.controller('AppCtrl', ['$scope', 'OrderService', function($scope, OrderService) {		
 		$scope.getOrderCount = function() {
 			return OrderService.orders.length;
