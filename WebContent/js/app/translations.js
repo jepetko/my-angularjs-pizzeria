@@ -1,5 +1,44 @@
-angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
+﻿angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
 /* jshint -W100 */
-    gettextCatalog.setStrings('de', {"Go!":"Los!","Login":"Login","Password":"Passwort"});
+    gettextCatalog.setStrings('de', 
+    		{	"Amount":"Betrag",
+    			"Count":"Anzahl",
+    			"Date":"Datum",
+    			"Done!":"Fertig!",
+    			"First name":"Vorname",
+    			"Go!":"Los!",
+    			"Grand Total":"Gesamtbetrag",
+    			"Login":"Login",
+    			"Name":"Name",
+    			"Password":"Passwort",
+    			"Price":"Preis",
+    			"Street / No.":"Stra&szlig;e / Hausnr.",
+    			"Summary":"Zusammenfassung",
+    			"Surname":"Nachname",
+    			"Total":"Gesamt",
+    			"Your payment method":"Ihre Zahlungsmethode",
+    			"ZIP / City":"PLZ / Ort",
+    			"My Awesome Pizzeria":"Meine perfekte Pizzeria",
+    			"Please, use this wizard to order some pizzas.":"Bitte, folgen Sie unserem Wizard um Pizzen auszuw&auml;hlen.",
+    			"Choose product": "Produkt auswählen",
+    			"Your shopping bag": "Ihr Einkaufskorb",
+    			"Your address": "Ihre Lieferadresse",
+    			"Finish": "Fertig",
+    			"Orders": "Bisherige Bestellungen",
+    			"Margharita": "Margharita",
+    			"Cardinale": "Cardinale",
+    			"Prosciuto": "Prosciuto",
+    			"Tonno": "Tonno",
+    			"Quattro Stagioni":"Quattro Stagioni",
+    			"Family Pizza": "Familien-Pizza",
+    			"Your bag is empty. Please add some pizzas to your bag.":"Ihr Einkaufskorb ist leer. Bitte, fügen Sie Pizzen hinzu.",
+    			"User": "Benutzer",
+    			"Logout": "Ausloggen",
+    			"VISA": "VISA",
+    			"MasterCard": "MasterCard",
+    			"Diners": "Diners",
+    			"Cash": "Bar bei Lieferung",
+    			"Thank you for your order. Here is the summary: ": "Danke für Ihre Bestellung. Hier ist die Zusammenfassung: "
+    		});
 /* jshint +W100 */
 }]);

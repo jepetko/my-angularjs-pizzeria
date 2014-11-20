@@ -14,7 +14,7 @@ public enum ProductDao {
 		products.add(new Product(3, "Prosciuto", 8.5f));
 		products.add(new Product(4, "Tonno", 7.5f));
 		products.add(new Product(5, "Quattro Stagioni", 8f));
-		products.add(new Product(6, "Familien-Pizza", 12f));
+		products.add(new Product(6, "Family Pizza", 12f));
 	}
 	
 	public List<Product> getModel() {

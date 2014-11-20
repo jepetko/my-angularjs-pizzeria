@@ -19,10 +19,10 @@
 	}
 %>
 <!DOCTYPE html>
-<html>
+<html id="main">
 	<head>
 		<meta charset="UTF-8">
-		<title>My Awesome Pizzeria</title>
+		<title data-translate>My Awesome Pizzeria</title>
 				
 		<script src="js/jquery-1.11.1.min.js"></script>				    
 		<script src="js/angular.js"></script>
@@ -45,6 +45,8 @@
 		<script src="js/app/orders/OrdersCtrl.js"></script>		
 		
 		<script src="js/app/application.js"></script>
+		<script src="js/app/translations.js"></script>
+		
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -58,7 +60,7 @@
 		<link rel="stylesheet" href="css/shopping-app.css">
 		
 	</head>
-	<body id="main">	
+	<body>	
 
 		<nav class="navbar navbar-default" role="navigation">
 		  <div class="container-fluid">

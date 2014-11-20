@@ -2,7 +2,7 @@
 	"use strict";
 	
 	angular.module('finish-app', ['shoppingbag-app', 'orders-app'])
-	.controller('FinishCtrl', ['$scope', 'OrderService', 'ProductsFactory', function($scope, OrderService, ProductsFactory) {
+	.controller('FinishCtrl', ['$scope', '$filter', 'OrderService', 'ProductsFactory', function($scope, $filter, OrderService, ProductsFactory) {
 		
 		$scope.products = [];
 		$scope.bag = OrderService.getBag();
@@ -28,7 +28,7 @@
 			if(OrderService.isEmpty()) {
 				return 'Your bag is empty. Please add some pizzas to your bag.';
 			}
-			var msg = 'Thank you for your order. Here is the summary: ';
+			var msg = $filter('translate')('Thank you for your order. Here is the summary: ');
 			var bag = OrderService.getBag();
 			var i=0;
 			for(var itm in bag) {

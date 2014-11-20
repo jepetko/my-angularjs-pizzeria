@@ -19,6 +19,7 @@ module.exports = function(config) {
             'js/angular-mocks.js',
             'js/angular-cookies.js',
             'js/jquery-1.11.1.min.js',
+            'js/angular-gettext.js',
             
             //source code:            
             'js/app/**/*.js',

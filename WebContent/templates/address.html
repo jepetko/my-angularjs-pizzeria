@@ -39,7 +39,7 @@
 		<label for="payment" class="col-xs-12 col-sm-2 control-label" data-translate>Your payment method</label>
 		<div class="col-xs-8 col-sm-4 has-feedback">		
 			<select class="form-control" ng-model="address.payment" name="payment" required>
-				<option ng-repeat="pt in payments">
+				<option ng-repeat="(k,pt) in payments" value="{{k}}">
 					{{pt | translate}}
 				</option>
 			</select>

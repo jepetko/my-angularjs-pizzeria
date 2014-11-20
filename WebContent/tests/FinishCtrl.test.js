@@ -2,6 +2,7 @@ describe('finish-app', function() {
 	
 	var $scope, ctrl, $httpBackend, _OrderService, _ProductsFactory;
 	
+	beforeEach(module('gettext'));
 	beforeEach(module('finish-app'));
 	
 	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, OrderService, ProductsFactory) {

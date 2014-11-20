@@ -8,7 +8,8 @@ describe('wizard-components', function() {
 		scope.$digest();
 		return element;
 	};
-	
+
+	beforeEach(module('gettext'));
 	beforeEach(module('wizard-components'));
 	beforeEach(inject(function($rootScope, $compile) {
 		scope = $rootScope.$new();

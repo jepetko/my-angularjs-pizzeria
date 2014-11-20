@@ -2,6 +2,7 @@ describe('shopping-app', function() {
 	
 	var rootScope, route, location, httpBackend;
 	
+	beforeEach(module('gettext'));
 	beforeEach(module('shopping-app'));
 	beforeEach(inject(function($rootScope, $route, $location, $httpBackend) {
 		rootScope = $rootScope;

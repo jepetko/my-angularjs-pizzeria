@@ -3,6 +3,7 @@ describe('address-app', function() {
 	var rootScope, scope, httpBackend, element, location, httpBackend;
 	var MyOrderService;
 		
+	beforeEach(module('gettext'));
 	beforeEach(module('address-app'));	
 	beforeEach(module('templates/address.html'));
 	
@@ -32,7 +33,7 @@ describe('address-app', function() {
 					no : 3,
 					zip : '1020',
 					city : 'Vienna',
-					payment : 'Cash'
+					payment : 'cash'
 				}
 			}			
 		);		
@@ -55,7 +56,7 @@ describe('address-app', function() {
 					no : 3,
 					zip : '1020',
 					city : 'Vienna',
-					payment : 'Cash'
+					payment : 'cash'
 				}
 			}]				
 		);		
@@ -83,7 +84,7 @@ describe('address-app', function() {
 		});
 		
 		it('should be valid when the values are complete and we pay in cash', function() {
-			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'Cash'};
+			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'cash'};
 			angular.forEach(address, function(val,key) {
 				scope.addressForm[key].$setViewValue(val);
 			});
@@ -102,7 +103,7 @@ describe('address-app', function() {
 		});
 		
 		it('should send the order to the server', function() {
-			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'Cash'};
+			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'cash'};
 			angular.forEach(address, function(val,key) {
 				scope.addressForm[key].$setViewValue(val);
 			});
@@ -134,7 +135,7 @@ describe('address-app', function() {
 		});
 		
 		it('should route to the last tab when form is submitted', function() {
-			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'Cash'};
+			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'cash'};
 			angular.forEach(address, function(val,key) {
 				scope.addressForm[key].$setViewValue(val);
 			});

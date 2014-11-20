@@ -31,14 +31,14 @@ module.exports = function (grunt) {
         nggettext_extract: {
 			pot: {
 				files: {
-				    'po/template.pot': ['../WebContent/*.html', '../WebContent/*.jsp', '../WebContent/templates/*.html']
+				    'po/template.pot': ['../WebContent/*.html', '../WebContent/templates/*.html', '../WebContent/js/app/**/*.js', '../WebContent/app.jsp']
 				}
 			}
         },
 		nggettext_compile: {
 			all: {
 				files: {
-					'../WebContent/js/app/translations.js': ['po/de.po']
+					'../WebContent/js/app/translations.js': ['po/de.po', 'po/sk.po']
 				}
 			}
 		}

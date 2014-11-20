@@ -20,7 +20,7 @@
 					if(val) {
 						val = StringUtils.trim(val);
 					}
-					if(val === 'Cash') {
+					if(val === 'cash') {
 						ctrl.$setValidity('creditcard', true);
 						scope.address.creditcard = '';
 					} else {
@@ -32,13 +32,13 @@
 	}])	
 	.controller('AddressCtrl', ['$scope', '$location', 'OrderService', 'StringUtils', function($scope, $location, OrderService, StringUtils) {	
 		$scope.address = OrderService.address;
-		$scope.payments = ['VISA', 'MasterCard', 'Diners', 'Cash'];
+		$scope.payments = {'visa':'VISA', 'mastercard': 'MasterCard', 'diners': 'Diners', 'cash': 'Cash'};
 		$scope.creditCardSelected = function() {
 			if(!$scope.address.payment) {
 				return false;
 			}
 			var p = StringUtils.trim($scope.address.payment);
-			return p != 'Cash';
+			return p != 'cash';
 		};
 		$scope.submit = function() {
 			OrderService.sendOrder();
