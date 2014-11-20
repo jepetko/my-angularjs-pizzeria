@@ -28,7 +28,8 @@
 		<script src="js/angular.js"></script>
 		<script src="js/angular-resource.js"></script>	
 		<script src="js/angular-route.js"></script>	
-		<script src="js/angular-cookies.js"></script>			
+		<script src="js/angular-cookies.js"></script>
+		<script src="js/angular-gettext.js"></script>				
 				
 		<script src="js/app/shared/SharedServices.js"></script>
 		<script src="js/app/users/UsersController.js"></script>		
@@ -85,7 +86,7 @@
 		  </div><!-- /.container-fluid -->
 		</nav>
 			
-		<div class="panel panel-default" data-ng-controller="AppCtrl">
+		<div class="panel panel-default" data-ng-controller="AppCtrl">		
 			<div class="panel-heading">Please, use this wizard to order some pizzas.</div>
 			<div class="panel-body">
 				<wizard c="getOrderCount()"></wizard>
