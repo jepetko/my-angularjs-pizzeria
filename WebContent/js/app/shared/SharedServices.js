@@ -7,7 +7,11 @@ angular.module('shared', ['ngCookies'])
 	
 	this.get = function(name) {
 		return $cookies[name];
-	}
+	};
+	
+	this.unset = function(name) {
+		delete $cookies[name];
+	};
 }])
 .service('StringUtils', [function() {
 	this.trim = function(str) {

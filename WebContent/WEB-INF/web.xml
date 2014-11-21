@@ -11,6 +11,13 @@
     <welcome-file>login.html</welcome-file>    
   </welcome-file-list>
   
+	<listener>
+	    <description>sessionListener</description>
+	    <listener-class>
+	        com.ng.auth.SessionListener
+	    </listener-class>
+	</listener>
+  
   <!-- products -->
   <servlet>
     <servlet-name>ProductResource</servlet-name>

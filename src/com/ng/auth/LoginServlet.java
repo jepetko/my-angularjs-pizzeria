@@ -1,7 +1,7 @@
 package com.ng.auth;
 
 import java.io.IOException;
- 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +26,10 @@ public class LoginServlet extends HttpServlet {
         
         User user = UsersDao.instance.query(login, password);         
         if(user != null) {
-            HttpSession session = request.getSession();
+        	HttpSession oldSession = request.getSession();
+        	oldSession.invalidate();
+        	
+            HttpSession session = request.getSession(true);
             session.setAttribute("login", login);            
             session.setMaxInactiveInterval(30*60); //session dauert 30 Minuten
             
