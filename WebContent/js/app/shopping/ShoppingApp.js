@@ -16,7 +16,7 @@
 					var regExp = new RegExp('missing hash prefix', 'g');
 					if( regExp.test('' + arguments[0].message) ) {
 						var args = [].concat(arguments).slice(1);
-						args.unshift(new Error('MISSING HASH PREFIX ISSUE: ' + arguments[0].message));
+						args.unshift('MISSING HASH PREFIX ISSUE: ' + arguments[0].message);
 						o.log.apply(o, args);
 					} else {
 						origError.apply(o, arguments);
