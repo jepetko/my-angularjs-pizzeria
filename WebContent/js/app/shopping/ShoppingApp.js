@@ -42,12 +42,15 @@
 		$locationProvider.hashPrefix('!');
 	}])
 	.run(function(gettextCatalog) {
-		gettextCatalog.setCurrentLanguage('de');
+		gettextCatalog.setCurrentLanguage('en');
 	    gettextCatalog.debug = true;		
 	})
-	.controller('AppCtrl', ['$scope', 'OrderService', function($scope, OrderService) {		
+	.controller('AppCtrl', ['$scope', 'OrderService', 'gettextCatalog', function($scope, OrderService, gettextCatalog) {		
 		$scope.getOrderCount = function() {
 			return OrderService.orders.length;
+		};
+		$scope.changeLanguage = function(lng) {
+			gettextCatalog.setCurrentLanguage(lng);
 		};
 	}]);
 })();

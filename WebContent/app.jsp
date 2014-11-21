@@ -60,7 +60,7 @@
 		<link rel="stylesheet" href="css/shopping-app.css">
 		
 	</head>
-	<body>	
+	<body data-ng-controller="AppCtrl">	
 
 		<nav class="navbar navbar-default" role="navigation">
 		  <div class="container-fluid">
@@ -76,8 +76,16 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav navbar-right" data-ng-controller="UsersController" data-ng-init="init('<%=login%>', '<%=sessID%>')">
 		        <li class="dropdown">
-		          <a href="javascript:return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'User' | translate}}: {{currentUser}} <span class="caret"></span></a>
+		          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'User' | translate}}: {{currentUser}} <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
+		            <li>
+		            	<a href="javascript:void(0);" data-ng-click="changeLanguage('de')" data-translate>German</a>
+		            </li>		            
+		           	<li>
+						<a href="javascript:void(0);" data-ng-click="changeLanguage('en')" data-translate>English</a>
+		            </li>
+		            <li class="divider">
+		            </li>	
 		            <li>
 		            	<a href="<%=response.encodeURL("LogoutServlet") %>" data-translate>Logout</a>
 		            </li>
@@ -88,7 +96,7 @@
 		  </div><!-- /.container-fluid -->
 		</nav>
 			
-		<div class="panel panel-default" data-ng-controller="AppCtrl">		
+		<div class="panel panel-default">		
 			<div class="panel-heading" data-translate>Please, use this wizard to order some pizzas.</div>
 			<div class="panel-body">
 				<wizard c="getOrderCount()"></wizard>

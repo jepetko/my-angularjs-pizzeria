@@ -38,7 +38,9 @@
     			"MasterCard": "MasterCard",
     			"Diners": "Diners",
     			"Cash": "Bar bei Lieferung",
-    			"Thank you for your order. Here is the summary: ": "Danke für Ihre Bestellung. Hier ist die Zusammenfassung: "
+    			"Thank you for your order. Here is the summary: ": "Danke für Ihre Bestellung. Hier ist die Zusammenfassung: ",
+    			"German": "Deutsch",
+    			"English": "Englisch"
     		});
 /* jshint +W100 */
 }]);
