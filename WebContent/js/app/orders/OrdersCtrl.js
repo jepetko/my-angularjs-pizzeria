@@ -5,7 +5,7 @@
 	.factory('Orders', ['$resource', function($resource) {
 		return $resource('payment/orders/:id', null, { save : {method: 'POST'} });
 	}])
-	.service('OrderService', ['Orders', 'StringUtils', function(Orders, StringUtils) {
+	.service('OrderService', ['Orders', 'StringUtils', '$timeout', function(Orders, StringUtils, $timeout) {
 		this.address = {};
 		this.bag = {};
 		this.orders = [];
@@ -54,8 +54,13 @@
 			})(this));
 		};
 		
-		//initialize orders:
-		this.orders = this.getPendingOrders();
+		//initialize orders; fix when cookie is disabled. first proper headers must be set
+		//before the pending orders are queried.
+		$timeout((function(self) {
+			return function() {
+				self.getPendingOrders();	
+			};
+		})(this), 500);		
 	}])
 	.controller('OrdersCtrl', ['OrderService', '$scope', function(OrderService, $scope) {
 		$scope.orders = OrderService.orders;

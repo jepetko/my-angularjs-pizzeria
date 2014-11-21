@@ -28,4 +28,20 @@ public class User {
 	public boolean matches(String login, String password) {
 		return this.login.equals(login) && this.password.equals(password);
 	}
+	
+	public String getLogin() {
+		return login;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getSurname() {
+		return surname;
+	}
+	
+	public boolean isAdmin() {
+		return admin;
+	}
 }

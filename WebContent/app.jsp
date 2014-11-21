@@ -32,7 +32,6 @@
 		<script src="js/angular-gettext.js"></script>				
 				
 		<script src="js/app/shared/SharedServices.js"></script>
-		<script src="js/app/users/UsersController.js"></script>		
 		
       	<script src="js/app/shopping/ProductsCtrl.js"></script>
       	<script src="js/app/shopping/ProductsFactory.js"></script>
@@ -60,7 +59,7 @@
 		<link rel="stylesheet" href="css/shopping-app.css">
 		
 	</head>
-	<body data-ng-controller="AppCtrl">	
+	<body data-ng-controller="AppCtrl" data-ng-init="setUserCredentials('<%=login%>', '<%=sessID%>')">	
 
 		<nav class="navbar navbar-default" role="navigation">
 		  <div class="container-fluid">
@@ -74,7 +73,7 @@
 		      <span class="navbar-brand" data-translate>My Awesome Pizzeria</span>
 		    </div>
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      <ul class="nav navbar-nav navbar-right" data-ng-controller="UsersController" data-ng-init="init('<%=login%>', '<%=sessID%>')">
+		      <ul class="nav navbar-nav navbar-right">
 		        <li class="dropdown">
 		          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'User' | translate}}: {{currentUser}} <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">

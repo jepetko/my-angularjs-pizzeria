@@ -13,9 +13,7 @@ public class Order {
 	
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd.MM.yyyy,HH:mm", timezone="CET")
 	private Date date;
-    
-    private Double total;
-	
+    	
 	public Order() {
 		this.date = new Date();
 	}

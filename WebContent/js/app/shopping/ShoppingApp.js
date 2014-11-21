@@ -41,16 +41,27 @@
 		
 		$locationProvider.hashPrefix('!');
 	}])
-	.run(function(gettextCatalog) {
+	.run(['gettextCatalog', '$http', function(gettextCatalog, $http) {
 		gettextCatalog.setCurrentLanguage('en');
-	    gettextCatalog.debug = true;		
-	})
-	.controller('AppCtrl', ['$scope', 'OrderService', 'gettextCatalog', function($scope, OrderService, gettextCatalog) {		
+	    gettextCatalog.debug = true;	
+	}])
+	.controller('AppCtrl', ['$scope', 'OrderService', 'gettextCatalog', 'cookieHandler', '$http', function($scope, OrderService, gettextCatalog, cookieHandler, $http) {		
 		$scope.getOrderCount = function() {
 			return OrderService.orders.length;
 		};
 		$scope.changeLanguage = function(lng) {
 			gettextCatalog.setCurrentLanguage(lng);
+		};
+		$scope.setUserCredentials = function(login,sessId) {
+			if(cookieHandler.get('login')) {
+				$scope.currentUser = cookieHandler.get('login');
+			} else {
+				$scope.currentUser = login;
+				$scope.sessionId = sessId;
+				
+				$http.defaults.headers.common['JSESSIONID'] = sessId;
+				$http.defaults.headers.common['login'] = login;
+			}			
 		};
 	}]);
 })();

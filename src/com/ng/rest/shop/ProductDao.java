@@ -7,7 +7,7 @@ public enum ProductDao {
 	
 	instance;
 	private List<Product> products = new ArrayList<Product>();
-	
+		
 	private ProductDao() {
 		products.add(new Product(1, "Margharita", 5.f));
 		products.add(new Product(2, "Cardinale", 6.5f));
