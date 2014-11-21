@@ -79,10 +79,11 @@
 			} else {
 				$scope.currentUser = login;
 				$scope.sessionId = sessId;
+				
+				//cookies disabled...
+				$http.defaults.headers.common['JSESSIONID'] = sessId;
+				$http.defaults.headers.common['login'] = login;				
 			}
-			//cookies disabled...
-			$http.defaults.headers.common['JSESSIONID'] = sessId;
-			$http.defaults.headers.common['login'] = login;
 		};
 	}]);
 })();
