@@ -1,6 +1,6 @@
 describe('address-app', function() {
 	
-	var rootScope, scope, httpBackend, element, location, httpBackend;
+	var rootScope, scope, httpBackend, element, location;
 	var MyOrderService;
 		
 	beforeEach(module('gettext'));

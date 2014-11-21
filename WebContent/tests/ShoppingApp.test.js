@@ -24,8 +24,8 @@ describe('shopping-app', function() {
 			expect(route.routes[null].redirectTo).toEqual('/select');
 			
 			//otherwise 2: real routing
-	        httpBackend.expectGET('templates/products.html').respond(200);
-	        
+			httpBackend.expectGET('templates/products.html').respond(200);
+			
 			location.path('/not/valid');
 			rootScope.$digest();
 			expect(location.path()).toEqual('/select');
