@@ -1,4 +1,4 @@
-<div data-ng-controller="ProductsCtrl" data-ng-init="init()" class="row">
+<div data-ng-controller="ProductsCtrl" class="row">
 	<div data-ng-repeat="p in products" class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
 		<div class="thumbnail"> 
 			<img data-ng-src="img/{{p.name | lowercase | nospaces}}.png" alt="{{p.name}}">		

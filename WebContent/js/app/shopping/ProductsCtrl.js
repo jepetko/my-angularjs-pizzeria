@@ -7,20 +7,8 @@
 			return input.replace(/\s+/g, '');
 		};
 	})
-	.controller('ProductsCtrl', ['$scope', 'ProductsFactory', 'OrderService', function($scope, ProductsFactory, OrderService) {
-		
-		$scope.products = [];
+	.controller('ProductsCtrl', ['$scope', 'ProductsService', 'OrderService', function($scope, ProductsService, OrderService) {		
+		$scope.products = ProductsService.getProducts();
 		$scope.bag = OrderService.getBag();
-		
-		$scope.all = function() {
-			return ProductsFactory.query(function(data) {
-				$scope.products = data;
-			});
-		};
-		
-		$scope.init = function() {
-			this.all();
-		};
-		
 	}]);
 })();

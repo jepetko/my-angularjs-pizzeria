@@ -37,7 +37,7 @@ describe('address-app directives', function() {
 			
 			var tpl = '<form name="form" novalidate><input class="form-control" type="text" ng-model="address.creditcard" name="creditcard" ng-show="creditCardSelected()" validcreditcard></form>';			
 			var component = compileTpl(tpl);
-			$scope.form.creditcard.$setViewValue("111111111111");
+			$scope.form.creditcard.$setViewValue("1234567890123456");
 			$scope.$digest();
 			
 			expect($scope.form.creditcard.$valid).toBe(true);

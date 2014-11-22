@@ -12,7 +12,7 @@
 					if(!viewValue) {
 						return '';
 					}
-					var matches = viewValue.match(/^\d+$/);
+					var matches = viewValue.match(/^\d+$/) && viewValue.length === 16;
 					ctrl.$setValidity('creditcard', matches);
 					return matches ? viewValue : '';
 				});				
@@ -24,7 +24,7 @@
 						ctrl.$setValidity('creditcard', true);
 						scope.address.creditcard = '';
 					} else {
-						ctrl.$setValidity('creditcard', (scope.address.creditcard && scope.address.creditcard.length > 0));	
+						ctrl.$setValidity('creditcard', (scope.address.creditcard && scope.address.creditcard.length === 16));	
 					}
 				});		
 			}

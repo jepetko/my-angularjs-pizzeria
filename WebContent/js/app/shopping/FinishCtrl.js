@@ -2,17 +2,10 @@
 	"use strict";
 	
 	angular.module('finish-app', ['shoppingbag-app', 'orders-app'])
-	.controller('FinishCtrl', ['$scope', '$filter', 'OrderService', 'ProductsFactory', function($scope, $filter, OrderService, ProductsFactory) {
+	.controller('FinishCtrl', ['$scope', '$filter', 'OrderService', 'ProductsService', function($scope, $filter, OrderService, ProductsService) {
 		
-		$scope.products = [];
+		$scope.products = ProductsService.getProducts();
 		$scope.bag = OrderService.getBag();
-		
-		$scope.all = function() {
-			return ProductsFactory.query(function(data) {
-				$scope.products = data;
-			});
-		};
-		$scope.all();
 		
 		$scope.getProductName = function(id) {
 			var name = null;

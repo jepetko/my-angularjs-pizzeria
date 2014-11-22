@@ -1,13 +1,14 @@
 describe("ProductsFactory", function() {
-	var rootScope, scope, httpBackend, myProductsFactory;
+	var rootScope, scope, httpBackend, myProductsFactory, myProductsService;
 	
 	beforeEach(module("products-services"));
 	
-	beforeEach(inject(function($rootScope, $httpBackend, ProductsFactory) {
+	beforeEach(inject(function($rootScope, $httpBackend, ProductsFactory, ProductsService) {
 		rootScope = $rootScope;
 		scope = $rootScope.$new();
 		httpBackend = $httpBackend;
 		myProductsFactory = ProductsFactory;
+		myProductsService = ProductsService;
 		
 		httpBackend.whenGET('shop/products').respond(200, [ {
 			"id" : 1,
@@ -40,7 +41,7 @@ describe("ProductsFactory", function() {
 	
 	describe("ProductsFactory", function() {
 		
-		it('should return 5 products', function() {
+		it('should return 6 products', function() {
 			myProductsFactory.query(function(data) {
 				scope.products = data;
 			});
@@ -49,6 +50,15 @@ describe("ProductsFactory", function() {
 			expect(scope.products.length).not.toBe(0);
 			expect(scope.products.length).toBe(6);
 		});		
-
+	});
+	
+	describe("ProductsService", function() {
+		it('should return 6 products', function() {
+			var products = myProductsService.getProducts();
+			httpBackend.flush();
+			expect(products).not.toBeNull();
+			expect(products.length).not.toBe(0);
+			expect(products.length).toBe(6);
+		});
 	});
 });

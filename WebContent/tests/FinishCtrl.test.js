@@ -1,19 +1,19 @@
 describe('finish-app', function() {
 	
-	var $scope, ctrl, $httpBackend, _OrderService, _ProductsFactory;
+	var $scope, ctrl, $httpBackend, _OrderService, _ProductsService;
 	
 	beforeEach(module('gettext'));
 	beforeEach(module('finish-app'));
 	
-	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, OrderService, ProductsFactory) {
+	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, OrderService, ProductsService) {
 		$scope = $rootScope.$new();
 		ctrl = $controller('FinishCtrl', {
 			'$scope' : $scope,
 			'OrderService': OrderService,
-			'ProductsFactory' : ProductsFactory
+			'ProductsService' : ProductsService
 		});
 		_OrderService = OrderService;
-		_ProductsFactory = ProductsFactory;
+		_ProductsService = ProductsService;
 		
 		_$httpBackend_.whenGET('payment/orders').respond(200, [ {
 			"items":[{

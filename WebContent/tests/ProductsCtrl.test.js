@@ -5,12 +5,12 @@ describe("products-ctrl", function() {
 	beforeEach(module('products-services'));
 	beforeEach(module('products-ctrl'));
 	
-	beforeEach(inject(function($rootScope, $controller, $httpBackend, $filter, ProductsFactory, OrderService) {
+	beforeEach(inject(function($rootScope, $controller, $httpBackend, $filter, ProductsService, OrderService) {
 		rootScope = $rootScope;
 		scope = $rootScope.$new();
 		controller = $controller('ProductsCtrl', {
 			'$scope': scope,
-			'ProductFactory': ProductsFactory,
+			'ProductsService': ProductsService,
 			'OrderService': OrderService
 		});
 		httpBackend = $httpBackend;
@@ -56,7 +56,6 @@ describe("products-ctrl", function() {
 	describe('ProductCtrl', function() {
 		
 		it('should be able to return all products', function() {
-			scope.all();
 			httpBackend.flush();
 			expect(scope.products.length).toBe(6);			
 		});
@@ -66,9 +65,7 @@ describe("products-ctrl", function() {
 			expect(filtered).toEqual('QuattroStagioni');
 		});
 		
-		it('should add product to the bag', function() {
-			
-			scope.all();
+		it('should add product to the bag', function() {			
 			httpBackend.flush();
 			
 			scope.bag["1"] = 7;

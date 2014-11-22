@@ -4,13 +4,13 @@ describe('shoppingbag-app', function() {
 	
 	beforeEach(module('shoppingbag-app'));
 	
-	beforeEach(inject(function($rootScope, $controller, $httpBackend, OrderService, ProductsFactory) {
+	beforeEach(inject(function($rootScope, $controller, $httpBackend, OrderService, ProductsService) {
 		rootScope = $rootScope;
 		scope = $rootScope.$new();
 		$controller('ShoppingBagCtrl', {
 			'$scope': scope,
 			'OrderService' : OrderService,
-			'ProductsFactory': ProductsFactory
+			'ProductsService': ProductsService
 		});
 		httpBackend = $httpBackend;
 		
@@ -35,6 +35,7 @@ describe('shoppingbag-app', function() {
 	}));
 	
 	describe('ShoppingBagCtrl', function() {
+		
 		it('should reflect BagService changes', function() {
 			
 			_OrderService.bag["1"] = 3;
@@ -45,20 +46,19 @@ describe('shoppingbag-app', function() {
 		});
 		
 		it('should give original product when id is provided', function() {
-			
-			scope.all();
 			httpBackend.flush();
-			
+			scope.init();
+
 			_OrderService.bag["1"] = 3;
 			_OrderService.bag["2"] = 5;
 			scope.$digest();
-			
+
 			expect(scope.getProductById("1")).toEqual(jasmine.objectContaining({name : 'Margharita'}));
 		});
 		
 		it('should compute the total', function() {
-			scope.all();
 			httpBackend.flush();
+			scope.init();
 			
 			_OrderService.bag["1"] = 3;
 			_OrderService.bag["2"] = 5;
@@ -69,8 +69,8 @@ describe('shoppingbag-app', function() {
 		});
 		
 		it('should comput the grand total price', function() {
-			scope.all();
 			httpBackend.flush();
+			scope.init();
 			
 			_OrderService.bag["1"] = 3;
 			_OrderService.bag["2"] = 5;

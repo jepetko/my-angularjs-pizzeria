@@ -3,7 +3,7 @@
 	"use strict";
 		
 	angular.module('shoppingbag-app',['products-services', 'orders-app'])
-	.controller('ShoppingBagCtrl', ['$scope', 'OrderService', 'ProductsFactory', function($scope, OrderService, ProductsFactory) {
+	.controller('ShoppingBagCtrl', ['$scope', 'OrderService', 'ProductsService', function($scope, OrderService, ProductsService) {
 		
 		$scope.bag = OrderService.getBag();
 		
@@ -11,14 +11,13 @@
 		 * query all products in order to display product name and price
 		 */
 		$scope.all = function() {
-			return ProductsFactory.query(function(data) {
-				$scope.products = {};
-				for(var i=0;i<data.length;i++) {
-					var row = data[i];
-					var id = row.id;
-					$scope.products['' + id] = row;
-				}			
-			});
+			var products = ProductsService.getProducts();
+			$scope.products = {};
+			for(var i=0;i<products.length;i++) {
+				var row = products[i];
+				var id = row.id;
+				$scope.products['' + id] = row;
+			}			
 		};	
 		
 		/**

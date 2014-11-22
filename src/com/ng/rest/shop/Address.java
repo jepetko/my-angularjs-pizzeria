@@ -9,7 +9,7 @@ public class Address {
 	private String zip;
 	private String city;
 	private String payment;
-	private int creditcard;
+	private long creditcard;
 	
 	public Address() {}
 	
@@ -56,11 +56,11 @@ public class Address {
 		this.payment = payment;
 	}	
 	
-	public int getCreditcard() {
+	public long getCreditcard() {
 		return creditcard;
 	}
 
-	public void setCreditcard(int creditcard) {
+	public void setCreditcard(long creditcard) {
 		this.creditcard = creditcard;
 	}	
 }
