@@ -40,7 +40,8 @@
     			"Cash": "Bar bei Lieferung",
     			"Thank you for your order. Here is the summary: ": "Danke für Ihre Bestellung. Hier ist die Zusammenfassung: ",
     			"German": "Deutsch",
-    			"English": "Englisch"
+    			"English": "Englisch",
+    			"No orders so far.": "Es gibt noch keine Bestelungen."
     		});
 /* jshint +W100 */
 }]);

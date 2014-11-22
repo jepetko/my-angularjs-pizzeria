@@ -83,11 +83,28 @@ describe('address-app', function() {
 			expect(btnSubmit.attr('disabled')).toBe('disabled');
 		});
 		
-		it('should be valid when the values are complete and we pay in cash', function() {
+		it('should be valid when the fields are filled and we pay in cash, but the button should be still disabled since we have no goods in our bag', function() {
 			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'cash'};
 			angular.forEach(address, function(val,key) {
 				scope.addressForm[key].$setViewValue(val);
 			});
+			scope.$digest();	
+			expect(scope.addressForm.$invalid).toBe(false);	
+			
+			var btnSubmit = $(element).find('button');
+			expect(btnSubmit.attr('disabled')).toBe('disabled');
+		});
+		
+		it('should be valid when the shopping bag is not empty, the fields are filled and we pay in cash', function() {
+			//add 3 Margharitas to the shopping bag
+			MyOrderService.bag["2"] = 3;
+			
+			//fill the address
+			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'cash'};
+			angular.forEach(address, function(val,key) {
+				scope.addressForm[key].$setViewValue(val);
+			});
+			
 			scope.$digest();	
 			expect(scope.addressForm.$invalid).toBe(false);	
 			

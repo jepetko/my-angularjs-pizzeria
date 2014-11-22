@@ -52,7 +52,8 @@
 	</div>	
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" class="btn btn-default" ng-disabled="addressForm.$invalid" data-translate>Done!</button>
+			<button type="submit" class="btn btn-default" ng-disabled="btnDisabled()" data-translate>Done!</button>
+			<span class="alert alert-info" role="alert" data-ng-if="isBagEmpty()" data-translate>Please, add some pizzas to your bag.</span>
 		</div>
 	</div>
 	    <pre>{{addressForm.$error|json}}</pre>

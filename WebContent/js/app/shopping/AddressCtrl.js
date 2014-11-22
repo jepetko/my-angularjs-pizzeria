@@ -40,6 +40,12 @@
 			var p = StringUtils.trim($scope.address.payment);
 			return p != 'cash';
 		};
+		$scope.isBagEmpty = function() {
+			return $.isEmptyObject(OrderService.bag);
+		};
+		$scope.btnDisabled = function() {
+			return $scope.addressForm.$invalid || $scope.isBagEmpty();
+		};
 		$scope.submit = function() {
 			OrderService.sendOrder();
 			//http://stackoverflow.com/questions/14301524/in-angular-how-to-redirect-with-location-path-as-http-post-success-callback

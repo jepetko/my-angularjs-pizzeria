@@ -1,5 +1,5 @@
 <div data-ng-controller="OrdersCtrl">
-	<table class="table">
+	<table class="table" data-ng-if="orders.length > 0">
 		<thead>
 			<tr>
 				<th data-translate>Date</th>										
@@ -15,4 +15,5 @@
 			</tr>
 		</tbody>	
  	</table>
+ 	<div class="well" data-ng-if="orders.length === 0" data-translate>No orders so far.</div>
 </div>
