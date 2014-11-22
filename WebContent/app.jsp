@@ -34,11 +34,9 @@
 			<script src="js/angular-resource.min.js"></script>	
 			<script src="js/angular-route.min.js"></script>	
 			<script src="js/angular-cookies.min.js"></script>
-			<script src="js/angular-gettext.min.js"></script>	
-			
+			<script src="js/angular-gettext.min.js"></script>				
 						
-			<script src="js/app/application.min.js"></script>
-			
+			<script src="js/app/application.min.js"></script>			
 		
 		<% } else {%>
 		
