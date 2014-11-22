@@ -67,7 +67,7 @@
 		})(this), 500);		
 	}])
 	.controller('OrdersCtrl', ['OrdersService', '$scope', function(OrdersService, $scope) {
-		$scope.orders = OrdersService.orders;
+		$scope.orders = OrdersService.getPendingOrders();
 	}]);
 	
 })();

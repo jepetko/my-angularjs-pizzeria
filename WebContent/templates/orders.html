@@ -10,7 +10,14 @@
 		<tbody>
 			<tr data-ng-repeat="o in orders">
 				<td>{{o.date}}</td>
-				<td>summary comes here</td>
+				<td>
+					<ul class="list-group">
+  						<li data-ng-repeat="itm in o.items" class="list-group-item">
+    						<span class="badge">{{itm.count}} x {{itm.product.price}} &euro;</span>    						
+   							{{itm.product.name}}
+  						</li>
+					</ul>
+				</td>
 				<td class="r-a">{{o.total}} &euro;</td>				
 			</tr>
 		</tbody>	
