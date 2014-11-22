@@ -12,5 +12,6 @@
   "eqnull": true,
   "node": true,
   "es5": false,
-  "multistr": true
+  "multistr": true,
+  "smarttabs":false
 }

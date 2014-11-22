@@ -34,6 +34,8 @@ module.exports = function(config) {
 
         // list of files to exclude
         exclude: [
+            'js/app/application.min.js',
+            'js/app/login.min.js'
         ],
 
 

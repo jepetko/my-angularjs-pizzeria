@@ -12,7 +12,7 @@
 			scope: {
 				c : '&'
 			},
-			controller: function($scope) {
+			controller: ['$scope', function($scope) {
 				$scope.pages = [ {
 					label : 'Choose product',
 					link : '#!/select',
@@ -49,7 +49,7 @@
 						}
 					});
 				});
-			},
+			}],
 			restrict: 'E',	
 			replace: true,
 			transclude: true,				

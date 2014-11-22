@@ -5,7 +5,7 @@
 	                                'products-ctrl', 'shoppingbag-app', 'address-app', 'finish-app'])
 	.config(['$httpProvider', '$routeProvider', '$locationProvider', '$logProvider', function($httpProvider, $routeProvider, $locationProvider, $logProvider) {
 		
-	    $httpProvider.interceptors.push(function ($q) {
+	    $httpProvider.interceptors.push(['$q', function ($q) {
 	    	
 	    	var isError = function(code) {
 	    		var codeStr = "" + code;
@@ -19,12 +19,12 @@
 	            },
 	            'responseError': function (rejection) {
 	            	if(isError(rejection.status)) {	            		
-	            		location.href = 'login.html';
+	            		location.href = 'login.jsp';
 	            	}
 	                return $q.reject(rejection);
 	            }
 	        };
-	    });
+	    }]);
 		
 		//ISSUE: missing hash prefix solved (occurs when the user changes the URL in der address bar manually)
 		var arr = $logProvider.$get;
@@ -62,11 +62,7 @@
 		
 		$locationProvider.hashPrefix('!');
 	}])
-	.run(['gettextCatalog', '$http', function(gettextCatalog, $http) {
-		gettextCatalog.setCurrentLanguage('en');
-	    gettextCatalog.debug = true;	
-	}])
-	.controller('AppCtrl', ['$scope', 'OrdersService', 'gettextCatalog', 'cookieHandler', '$http', function($scope, OrdersService, gettextCatalog, cookieHandler, $http) {		
+	.controller('AppCtrl', ['$scope', 'OrdersService', 'cookieHandler', 'gettextCatalog', '$http', function($scope, OrdersService, cookieHandler, gettextCatalog, $http) {		
 		$scope.getOrderCount = function() {
 			return OrdersService.orders.length;
 		};

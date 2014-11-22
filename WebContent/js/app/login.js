@@ -1,9 +1,9 @@
-(function() {
-	"use strict";
-	
+angular.element(window).ready( function() {
+	var parent = $('#login');
 	angular.module('login', ['gettext'])
-	.run( function(gettextCatalog) {
-		gettextCatalog.setCurrentLanguage('en');
-	    gettextCatalog.debug = true;		
-	});
-})();
+	.run(['gettextCatalog', function(gettextCatalog) {
+		gettextCatalog.setCurrentLanguage('de');
+        gettextCatalog.debug = true;		
+	}] );
+    angular.bootstrap(parent,['login']);
+});

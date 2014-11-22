@@ -17,35 +17,54 @@
 		login = (String) session.getAttribute("login");
 		sessID = session.getId();
 	}
+	
+	//environment
+	boolean prod = true;
 %>
 <!DOCTYPE html>
 <html id="main">
 	<head>
 		<meta charset="UTF-8">
 		<title data-translate>My Awesome Pizzeria</title>
+			
+		<% if(prod) { %>
+		
+			<script src="js/jquery-1.11.1.min.js"></script>				    
+			<script src="js/angular.min.js"></script>
+			<script src="js/angular-resource.min.js"></script>	
+			<script src="js/angular-route.min.js"></script>	
+			<script src="js/angular-cookies.min.js"></script>
+			<script src="js/angular-gettext.min.js"></script>	
+			
+						
+			<script src="js/app/application.min.js"></script>
+			
+		
+		<% } else {%>
+		
+			<script src="js/jquery-1.11.1.min.js"></script>				    
+			<script src="js/angular.js"></script>
+			<script src="js/angular-resource.js"></script>	
+			<script src="js/angular-route.js"></script>	
+			<script src="js/angular-cookies.js"></script>
+			<script src="js/angular-gettext.js"></script>				
+					
+			<script src="js/app/shared/SharedServices.js"></script>
+			<script src="js/app/shared/ProductsServices.js"></script>
+			
+	      	<script src="js/app/shopping/ProductsCtrl.js"></script>
+			<script src="js/app/shopping/ShoppingBagCtrl.js"></script>
+			<script src="js/app/shopping/WizardDirective.js"></script>
+			<script src="js/app/shopping/ShoppingApp.js"></script>	
+			<script src="js/app/shopping/AddressCtrl.js"></script>			
+			<script src="js/app/shopping/FinishCtrl.js"></script>
+			
+			<script src="js/app/orders/OrdersCtrl.js"></script>		
+			
+			<script src="js/app/application.js"></script>
+			<script src="js/app/translations.js"></script>
 				
-		<script src="js/jquery-1.11.1.min.js"></script>				    
-		<script src="js/angular.js"></script>
-		<script src="js/angular-resource.js"></script>	
-		<script src="js/angular-route.js"></script>	
-		<script src="js/angular-cookies.js"></script>
-		<script src="js/angular-gettext.js"></script>				
-				
-		<script src="js/app/shared/SharedServices.js"></script>
-		<script src="js/app/shared/ProductsServices.js"></script>
-		
-      	<script src="js/app/shopping/ProductsCtrl.js"></script>
-		<script src="js/app/shopping/ShoppingBagCtrl.js"></script>
-		<script src="js/app/shopping/WizardDirective.js"></script>
-		<script src="js/app/shopping/ShoppingApp.js"></script>	
-		<script src="js/app/shopping/AddressCtrl.js"></script>			
-		<script src="js/app/shopping/FinishCtrl.js"></script>
-		
-		<script src="js/app/orders/OrdersCtrl.js"></script>		
-		
-		<script src="js/app/application.js"></script>
-		<script src="js/app/translations.js"></script>
-		
+		<% } %>	
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">

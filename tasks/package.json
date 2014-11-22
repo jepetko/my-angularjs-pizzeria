@@ -1,5 +1,8 @@
 {
   "name": "my-first-angularjs-pizzeria-tasks",
+  "author": {
+  	"name": "Katarina Golbang"
+  },
   "version": "0.0.1",
   "scripts": {
     "test": "grunt qunit"

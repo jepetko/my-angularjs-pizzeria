@@ -1,3 +1,7 @@
+<%
+	//environment
+	boolean prod = true;
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,12 +9,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Login</title>
 		
+		<% if(prod) { %>
+		
+		<script src="js/jquery-1.11.1.min.js"></script>				    
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular-cookies.min.js"></script>		
+		<script src="js/angular-gettext.min.js"></script>	
+		<script src="js/app/login.min.js"></script>
+		
+		<% } else { %>
+		
 		<script src="js/jquery-1.11.1.min.js"></script>				    
 		<script src="js/angular.js"></script>
 		<script src="js/angular-cookies.js"></script>		
 		<script src="js/angular-gettext.js"></script>	
 		<script src="js/app/login.js"></script>		
-		<script src="js/app/translations.js"></script>		
+		<script src="js/app/translations.js"></script>	
+				
+		<% } %>
 		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -23,7 +39,7 @@
 		
 		<link rel="stylesheet" href="css/shopping-app.css">			
 	</head>
-	<body data-ng-app="login">
+	<body id="login">
 
 		<div class="container-fluid">
 			<div class="row">
