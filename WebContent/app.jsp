@@ -32,9 +32,9 @@
 		<script src="js/angular-gettext.js"></script>				
 				
 		<script src="js/app/shared/SharedServices.js"></script>
+		<script src="js/app/shared/ProductsServices.js"></script>
 		
       	<script src="js/app/shopping/ProductsCtrl.js"></script>
-      	<script src="js/app/shopping/ProductsFactory.js"></script>
 		<script src="js/app/shopping/ShoppingBagCtrl.js"></script>
 		<script src="js/app/shopping/WizardDirective.js"></script>
 		<script src="js/app/shopping/ShoppingApp.js"></script>	

@@ -3,7 +3,7 @@
 	
 	angular.module('login', ['gettext'])
 	.run( function(gettextCatalog) {
-		gettextCatalog.setCurrentLanguage('de');
+		gettextCatalog.setCurrentLanguage('en');
 	    gettextCatalog.debug = true;		
 	});
 })();
