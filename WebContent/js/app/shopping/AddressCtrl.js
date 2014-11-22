@@ -30,8 +30,8 @@
 			}
 		};	
 	}])	
-	.controller('AddressCtrl', ['$scope', '$location', 'OrderService', 'StringUtils', function($scope, $location, OrderService, StringUtils) {	
-		$scope.address = OrderService.address;
+	.controller('AddressCtrl', ['$scope', '$location', 'OrdersService', 'StringUtils', function($scope, $location, OrdersService, StringUtils) {	
+		$scope.address = OrdersService.address;
 		$scope.payments = {'visa':'VISA', 'mastercard': 'MasterCard', 'diners': 'Diners', 'cash': 'Cash'};
 		$scope.creditCardSelected = function() {
 			if(!$scope.address.payment) {
@@ -41,13 +41,13 @@
 			return p != 'cash';
 		};
 		$scope.isBagEmpty = function() {
-			return $.isEmptyObject(OrderService.bag);
+			return $.isEmptyObject(OrdersService.bag);
 		};
 		$scope.btnDisabled = function() {
 			return $scope.addressForm.$invalid || $scope.isBagEmpty();
 		};
 		$scope.submit = function() {
-			OrderService.sendOrder();
+			OrdersService.sendOrder();
 			//http://stackoverflow.com/questions/14301524/in-angular-how-to-redirect-with-location-path-as-http-post-success-callback
 			$location.path('/finish');
 		};

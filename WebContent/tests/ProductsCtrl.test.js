@@ -1,21 +1,21 @@
 describe("products-ctrl", function() {
 		
-	var rootScope, scope, controller, httpBackend, filter, _OrderService;
+	var rootScope, scope, controller, httpBackend, filter, _OrdersService;
 		
 	beforeEach(module('products-services'));
 	beforeEach(module('products-ctrl'));
 	
-	beforeEach(inject(function($rootScope, $controller, $httpBackend, $filter, ProductsService, OrderService) {
+	beforeEach(inject(function($rootScope, $controller, $httpBackend, $filter, ProductsService, OrdersService) {
 		rootScope = $rootScope;
 		scope = $rootScope.$new();
 		controller = $controller('ProductsCtrl', {
 			'$scope': scope,
 			'ProductsService': ProductsService,
-			'OrderService': OrderService
+			'OrdersService': OrdersService
 		});
 		httpBackend = $httpBackend;
 		filter = $filter;
-		_OrderService = OrderService;
+		_OrdersService = OrdersService;
 		
 		httpBackend.whenGET('payment/orders').respond(200, [ {
 			"items":[{
@@ -71,7 +71,7 @@ describe("products-ctrl", function() {
 			scope.bag["1"] = 7;
 			scope.$digest();
 			
-			expect(_OrderService.getBag()).toEqual( jasmine.objectContaining({ 1: 7}) );
+			expect(_OrdersService.getBag()).toEqual( jasmine.objectContaining({ 1: 7}) );
 		});
 	});	
 });

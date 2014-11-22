@@ -1,19 +1,19 @@
 describe('address-app', function() {
 	
 	var rootScope, scope, httpBackend, element, location;
-	var MyOrderService;
+	var MyOrdersService;
 		
 	beforeEach(module('gettext'));
 	beforeEach(module('address-app'));	
 	beforeEach(module('templates/address.html'));
 	
-	beforeEach(inject(function($rootScope, $controller, $compile, $templateCache, $location, $httpBackend, OrderService) {
+	beforeEach(inject(function($rootScope, $controller, $compile, $templateCache, $location, $httpBackend, OrdersService) {
 		var template = $templateCache.get('templates/address.html');
 		var link = $compile(template);
 		element = link($rootScope.$new());
 		scope = angular.element(element).scope();
 		location = $location;
-		MyOrderService = OrderService;
+		MyOrdersService = OrdersService;
 		
 		httpBackend = $httpBackend;
 		httpBackend.whenPOST('payment/orders').respond(200, 
@@ -97,7 +97,7 @@ describe('address-app', function() {
 		
 		it('should be valid when the shopping bag is not empty, the fields are filled and we pay in cash', function() {
 			//add 3 Margharitas to the shopping bag
-			MyOrderService.bag["2"] = 3;
+			MyOrdersService.bag["2"] = 3;
 			
 			//fill the address
 			var address = {firstname : 'Katarina', surname: 'Golbang', street: 'Some Street', no: 3, zip: '1020', city: 'Vienna', payment: 'cash'};
@@ -127,7 +127,7 @@ describe('address-app', function() {
 			scope.$digest();
 			
 			//add a product to the bag:
-			var bag = MyOrderService.getBag();
+			var bag = MyOrdersService.getBag();
 			bag['1'] = 10;
 			
 			//submit the form and flush the server requests
@@ -135,7 +135,7 @@ describe('address-app', function() {
 			httpBackend.flush();
 			
 			//get all orders again
-			var orders = MyOrderService.getPendingOrders();
+			var orders = MyOrdersService.getPendingOrders();
 			httpBackend.flush();
 			
 			//does the order fit the expectations?
@@ -148,7 +148,7 @@ describe('address-app', function() {
 			expect(item.product).toEqual(jasmine.objectContaining( { name: 'Margharita', price: 5.50 } ));
 			expect(item.count).toBe(10);	
 			expect(item.date).toBe('16.11.2014 12:25');		
-			expect(item.total).toBe(55);
+			expect(item.total).toBe(55);			
 		});
 		
 		it('should route to the last tab when form is submitted', function() {
@@ -160,7 +160,7 @@ describe('address-app', function() {
 			expect(scope.addressForm.$invalid).toBe(false);	
 			
 			scope.submit();
-			expect(location.path().substring(1)).toEqual('finish');
+			expect(location.path().substring(1)).toEqual('finish');			
 		});
 	});	
 });

@@ -66,9 +66,9 @@
 		gettextCatalog.setCurrentLanguage('en');
 	    gettextCatalog.debug = true;	
 	}])
-	.controller('AppCtrl', ['$scope', 'OrderService', 'gettextCatalog', 'cookieHandler', '$http', function($scope, OrderService, gettextCatalog, cookieHandler, $http) {		
+	.controller('AppCtrl', ['$scope', 'OrdersService', 'gettextCatalog', 'cookieHandler', '$http', function($scope, OrdersService, gettextCatalog, cookieHandler, $http) {		
 		$scope.getOrderCount = function() {
-			return OrderService.orders.length;
+			return OrdersService.orders.length;
 		};
 		$scope.changeLanguage = function(lng) {
 			gettextCatalog.setCurrentLanguage(lng);

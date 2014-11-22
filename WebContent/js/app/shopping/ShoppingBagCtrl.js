@@ -3,9 +3,9 @@
 	"use strict";
 		
 	angular.module('shoppingbag-app',['products-services', 'orders-app'])
-	.controller('ShoppingBagCtrl', ['$scope', 'OrderService', 'ProductsService', function($scope, OrderService, ProductsService) {
+	.controller('ShoppingBagCtrl', ['$scope', 'OrdersService', 'ProductsService', function($scope, OrdersService, ProductsService) {
 		
-		$scope.bag = OrderService.getBag();
+		$scope.bag = OrdersService.getBag();
 		
 		/**
 		 * query all products in order to display product name and price

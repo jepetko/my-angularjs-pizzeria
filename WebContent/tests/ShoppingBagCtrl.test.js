@@ -1,15 +1,15 @@
 describe('shoppingbag-app', function() {
 	
-	var rootScope, scope, controller, httpBackend, _OrderService;
+	var rootScope, scope, controller, httpBackend, _OrdersService;
 	
 	beforeEach(module('shoppingbag-app'));
 	
-	beforeEach(inject(function($rootScope, $controller, $httpBackend, OrderService, ProductsService) {
+	beforeEach(inject(function($rootScope, $controller, $httpBackend, OrdersService, ProductsService) {
 		rootScope = $rootScope;
 		scope = $rootScope.$new();
 		$controller('ShoppingBagCtrl', {
 			'$scope': scope,
-			'OrderService' : OrderService,
+			'OrdersService' : OrdersService,
 			'ProductsService': ProductsService
 		});
 		httpBackend = $httpBackend;
@@ -31,15 +31,15 @@ describe('shoppingbag-app', function() {
 					"name" : "Cardinale",
 					"price" : 6.5
 				}]);
-		_OrderService = OrderService;
+		_OrdersService = OrdersService;
 	}));
 	
 	describe('ShoppingBagCtrl', function() {
 		
 		it('should reflect BagService changes', function() {
 			
-			_OrderService.bag["1"] = 3;
-			_OrderService.bag["2"] = 5;
+			_OrdersService.bag["1"] = 3;
+			_OrdersService.bag["2"] = 5;
 			scope.$digest();
 			
 			expect(scope.bag).toEqual(jasmine.objectContaining({1: 3, 2: 5}));		
@@ -49,8 +49,8 @@ describe('shoppingbag-app', function() {
 			httpBackend.flush();
 			scope.init();
 
-			_OrderService.bag["1"] = 3;
-			_OrderService.bag["2"] = 5;
+			_OrdersService.bag["1"] = 3;
+			_OrdersService.bag["2"] = 5;
 			scope.$digest();
 
 			expect(scope.getProductById("1")).toEqual(jasmine.objectContaining({name : 'Margharita'}));
@@ -60,8 +60,8 @@ describe('shoppingbag-app', function() {
 			httpBackend.flush();
 			scope.init();
 			
-			_OrderService.bag["1"] = 3;
-			_OrderService.bag["2"] = 5;
+			_OrdersService.bag["1"] = 3;
+			_OrdersService.bag["2"] = 5;
 			scope.$digest();
 			
 			expect(scope.getTotal("1")).toEqual(15.0);
@@ -72,8 +72,8 @@ describe('shoppingbag-app', function() {
 			httpBackend.flush();
 			scope.init();
 			
-			_OrderService.bag["1"] = 3;
-			_OrderService.bag["2"] = 5;
+			_OrdersService.bag["1"] = 3;
+			_OrdersService.bag["2"] = 5;
 			scope.$digest();
 			
 			expect(scope.getGrandTotal()).toEqual(47.50);

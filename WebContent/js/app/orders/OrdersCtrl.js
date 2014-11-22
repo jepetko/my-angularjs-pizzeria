@@ -1,11 +1,11 @@
 (function() {
 	"use strict";
 	
-	angular.module('orders-app', ['shared'])
+	angular.module('orders-app', ['ngResource', 'shared'])
 	.factory('Orders', ['$resource', function($resource) {
 		return $resource('payment/orders/:id', null, { save : {method: 'POST'} });
 	}])
-	.service('OrderService', ['Orders', 'StringUtils', '$timeout', function(Orders, StringUtils, $timeout) {
+	.service('OrdersService', ['Orders', 'StringUtils', '$timeout', function(Orders, StringUtils, $timeout) {
 		this.address = {};
 		this.bag = {};
 		this.orders = [];
@@ -21,7 +21,11 @@
 			return this.bag;
 		};
 		
-		this.isEmpty = function() {
+		this.clearBag = function() {
+			this.bag = {};
+		};
+		
+		this.isBagEmpty = function() {
 			for(var key in this.bag) {
 				return false;
 			}
@@ -62,8 +66,8 @@
 			};
 		})(this), 500);		
 	}])
-	.controller('OrdersCtrl', ['OrderService', '$scope', function(OrderService, $scope) {
-		$scope.orders = OrderService.orders;
+	.controller('OrdersCtrl', ['OrdersService', '$scope', function(OrdersService, $scope) {
+		$scope.orders = OrdersService.orders;
 	}]);
 	
 })();

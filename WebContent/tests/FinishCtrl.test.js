@@ -5,14 +5,14 @@ describe('finish-app', function() {
 	beforeEach(module('gettext'));
 	beforeEach(module('finish-app'));
 	
-	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, OrderService, ProductsService) {
+	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, OrdersService, ProductsService) {
 		$scope = $rootScope.$new();
 		ctrl = $controller('FinishCtrl', {
 			'$scope' : $scope,
-			'OrderService': OrderService,
+			'OrdersService': OrdersService,
 			'ProductsService' : ProductsService
 		});
-		_OrderService = OrderService;
+		_OrdersService = OrdersService;
 		_ProductsService = ProductsService;
 		
 		_$httpBackend_.whenGET('payment/orders').respond(200, [ {
@@ -40,16 +40,19 @@ describe('finish-app', function() {
 		
 		it('should print a hint if the bag is empty', function() {
 			$httpBackend.flush();
-			expect($scope.getMessage()).toEqual('Your bag is empty. Please add some pizzas to your bag.');
+			expect($scope.createMessage()).toEqual('Your bag is empty. Please add some pizzas to your bag.');
 		});
 		
 		it('should return message to the user including the order summary', function() {
 			
 			$httpBackend.flush();
-			_OrderService.bag['1'] = 3;
-			_OrderService.bag['2'] = 5;
+			_OrdersService.bag['1'] = 3;
+			_OrdersService.bag['2'] = 5;
 			
-			expect($scope.getMessage()).toEqual('Thank you for your order. Here is the summary: 3x Margharita, 5x Cardinale.');			
+			expect($scope.createMessage()).toEqual('Thank you for your order. Here is the summary: 3x Margharita, 5x Cardinale.');	
+			
+			//should have cleared the shopping bag..
+			expect(_OrdersService.isBagEmpty()).toBe(true);
 		});
 	});
 });
