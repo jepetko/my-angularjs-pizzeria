@@ -42,7 +42,8 @@
 				"German": "Deutsch",
 				"English": "Englisch",
 				"No orders so far.": "Es gibt noch keine Bestelungen.",
-				"Please, add some pizzas to your bag.": "Bitte, f&uuml;gen Sie Pizzen Ihrem Warenkorb hinzu."
+				"Please, add some pizzas to your bag.": "Bitte, f&uuml;gen Sie Pizzen Ihrem Warenkorb hinzu.",
+				"all rights reserved": "alle Rechte vorbehalten"
 			});
 	/* jshint +W100 */
 }]);

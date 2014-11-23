@@ -117,7 +117,13 @@
 			<div class="panel-body">
 				<wizard c="getOrderCount()"></wizard>
 				<ng-view></ng-view>
+				<div class="panel panel-default">
+		  			<div class="panel-body copyright-body">
+			  				&copy; leanetic IT Consulting, {{'all rights reserved' | translate}}		  						
+					</div>
+		  		</div>
 			</div>
 		</div>
+	
 	</body>
 </html>

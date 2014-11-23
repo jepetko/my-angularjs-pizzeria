@@ -13,3 +13,18 @@ body {
 tfoot {
 	background: lightgrey;
 }
+
+.copyright {
+	position: absolute; 
+	bottom: 0;
+	left: 0; 
+	right: 0;
+}
+
+.copyright-body {
+	background: url(../img/leanetic.png) no-repeat;
+	background-size: auto 80%;
+	padding-left: 70px;
+	font-size: 10pt;
+	background-position:10px center;
+}

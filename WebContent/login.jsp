@@ -62,6 +62,11 @@
 				</div>			
 			</div>
 		</div>
+		<div class="panel panel-default copyright">
+		  <div class="panel-body copyright-body">
+		    &copy; leanetic IT Consulting, {{'all rights reserved' | translate}} 
+		  </div>
+		</div>		
 		
 	</body>
 </html>

@@ -15,7 +15,7 @@ module.exports = function (grunt) {
         // Task configuration.
         uglify: {
             options: {
-                //banner: '<%= banner %>',
+                banner: '<%= banner %>',
                 mangle: {
                     except: ['jQuery']
                 }
