@@ -2,9 +2,10 @@
 	
 	"use strict";
 		
-	angular.module('shoppingbag-app',['products-services', 'orders-app'])
+	angular.module('shoppingbag-app',['products-services', 'orders-services'])
 	.controller('ShoppingBagCtrl', ['$scope', 'OrdersService', 'ProductsService', function($scope, OrdersService, ProductsService) {
 		
+		$scope.products = {};
 		$scope.bag = OrdersService.getBag();
 		
 		/**

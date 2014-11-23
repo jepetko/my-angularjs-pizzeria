@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 	
-	angular.module('finish-app', ['shoppingbag-app', 'orders-app'])
+	angular.module('finish-app', ['products-services', 'orders-services'])
 	.controller('FinishCtrl', ['$scope', '$filter', 'OrdersService', 'ProductsService', function($scope, $filter, OrdersService, ProductsService) {
 		
 		$scope.products = ProductsService.getProducts();
@@ -19,7 +19,7 @@
 		
 		$scope.createMessage = function() {
 			if(OrdersService.isBagEmpty()) {
-				return 'Your bag is empty. Please add some pizzas to your bag.';
+				return $filter('translate')('Your bag is empty. Please add some pizzas to your bag.');
 			}
 			var msg = $filter('translate')('Thank you for your order. Here is the summary: ');
 			var bag = OrdersService.getBag();

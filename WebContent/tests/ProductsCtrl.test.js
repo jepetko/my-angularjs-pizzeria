@@ -2,8 +2,7 @@ describe("products-ctrl", function() {
 		
 	var rootScope, scope, controller, httpBackend, filter, _OrdersService;
 		
-	beforeEach(module('products-services'));
-	beforeEach(module('products-ctrl'));
+	beforeEach(module('products-app'));
 	
 	beforeEach(inject(function($rootScope, $controller, $httpBackend, $filter, ProductsService, OrdersService) {
 		rootScope = $rootScope;

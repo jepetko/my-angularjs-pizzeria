@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 	
-	angular.module('address-app',['ngResource', 'orders-app'])
+	angular.module('address-app',['orders-services'])
 	.directive('validcreditcard', ['StringUtils', function(StringUtils) {
 		return {
 			scope: '=',

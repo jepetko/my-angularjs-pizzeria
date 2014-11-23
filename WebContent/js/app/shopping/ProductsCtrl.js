@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 	
-	angular.module('products-ctrl', ['shoppingbag-app'])
+	angular.module('products-app', ['products-services', 'orders-services'])
 	.filter('nospaces', function() {
 		return function(input) {
 			return input.replace(/\s+/g, '');
