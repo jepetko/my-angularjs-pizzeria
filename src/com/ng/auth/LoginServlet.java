@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             String encodedURL = response.encodeRedirectURL("app.jsp");
             response.sendRedirect(encodedURL);
         } else {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/login.html?ERR=1");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
             dispatcher.forward( request, response ); 
         }
     } 

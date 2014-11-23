@@ -8,8 +8,8 @@ public enum UsersDao {
 	private List<User> users = new ArrayList<User>();
 	
 	private UsersDao() {		
-		users.add( new User("user", "user", "Ernst", "Gruber"));
-		users.add( new User("admin", "admin", "Hubert", "Maier", true));
+		users.add( new User("hansi", "huber", "Hansi", "Huber"));
+		users.add( new User("max", "gruber", "Maximilian", "Gruber", true));
 	}
 	
 	public User query(String login, String password) {

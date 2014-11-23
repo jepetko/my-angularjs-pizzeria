@@ -10,16 +10,20 @@ import javax.servlet.http.HttpSessionListener;
 public class SessionListener implements HttpSessionListener {
 	
 	private static List<String> sessions = new ArrayList<String>();
+	
+	private void printSessions() {
+    	System.out.println("**************************");
+    	for(int i=0; i<sessions.size();i++) {
+    		System.out.println(sessions.get(i));
+    	}
+    	System.out.println("**************************");	
+	}
  
     public void sessionCreated(HttpSessionEvent event) {
     	sessions.add(event.getSession().getId());
     	
     	System.out.println(">> sessionCreated");
-    	System.out.println("**************************+++");
-    	for(int i=0; i<sessions.size();i++) {
-    		System.out.println(sessions.get(i));
-    	}
-    	System.out.println("**************************+++");
+    	printSessions();
     }
  
     public void sessionDestroyed(HttpSessionEvent event) {
@@ -30,11 +34,7 @@ public class SessionListener implements HttpSessionListener {
     	}
     	
     	System.out.println("<< sessionDestroyed");
-    	System.out.println("**************************+++");
-    	for(int i=0; i<sessions.size();i++) {
-    		System.out.println(sessions.get(i));
-    	}
-    	System.out.println("**************************+++");    	
+    	printSessions();   	
     }
     
     public static boolean isAlive(String sessId) {
