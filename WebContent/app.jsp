@@ -49,15 +49,15 @@
 					
 			<script src="js/app/shared/SharedServices.js"></script>
 			<script src="js/app/shared/ProductsServices.js"></script>
+			<script src="js/app/shared/OrdersServices.js"></script>
 			
 	      	<script src="js/app/shopping/ProductsCtrl.js"></script>
 			<script src="js/app/shopping/ShoppingBagCtrl.js"></script>
 			<script src="js/app/shopping/WizardDirective.js"></script>
 			<script src="js/app/shopping/ShoppingApp.js"></script>	
 			<script src="js/app/shopping/AddressCtrl.js"></script>			
-			<script src="js/app/shopping/FinishCtrl.js"></script>
-			
-			<script src="js/app/orders/OrdersCtrl.js"></script>		
+			<script src="js/app/shopping/FinishCtrl.js"></script>			
+			<script src="js/app/shopping/OrdersCtrl.js"></script>		
 			
 			<script src="js/app/application.js"></script>
 			<script src="js/app/translations.js"></script>

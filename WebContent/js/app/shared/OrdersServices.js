@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 	
-	angular.module('orders-app', ['ngResource', 'shared'])
+	angular.module('orders-services', ['ngResource', 'shared'])
 	.factory('Orders', ['$resource', function($resource) {
 		return $resource('payment/orders/:id', null, { save : {method: 'POST'} });
 	}])
@@ -65,9 +65,5 @@
 				self.getPendingOrders();	
 			};
 		})(this), 500);		
-	}])
-	.controller('OrdersCtrl', ['OrdersService', '$scope', function(OrdersService, $scope) {
-		$scope.orders = OrdersService.getPendingOrders();
-	}]);
-	
+	}]);	
 })();

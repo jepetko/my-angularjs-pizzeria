@@ -73,8 +73,7 @@ module.exports = function (grunt) {
 
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'uglify']);
-    //grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('default', ['jshint']);
     grunt.registerTask('extract', ['nggettext_extract']);
     grunt.registerTask('compile', ['nggettext_compile']);    
 };
