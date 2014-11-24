@@ -36,7 +36,7 @@
 			return Orders.query( (function(self) {
 				return function(data) {
 					self.orders = data;					
-				}
+				};
 			})(this) );			
 		};
 		

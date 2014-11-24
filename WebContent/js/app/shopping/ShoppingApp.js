@@ -4,26 +4,25 @@
 	angular.module('shopping-app', ['ngRoute', 'wizard-components', 'products-app', 'shoppingbag-app', 'address-app', 'finish-app', 'orders-app'])
 	.config(['$httpProvider', '$routeProvider', '$locationProvider', '$logProvider', function($httpProvider, $routeProvider, $locationProvider, $logProvider) {
 		
-	    $httpProvider.interceptors.push(['$q', function ($q) {
-	    	
-	    	var isError = function(code) {
-	    		var codeStr = "" + code;
-	    		return codeStr.indexOf('4') === 0 || codeStr.indexOf('5') === 0;
-	    	};
-	    	
-	        return {
-	            'response': function (response) {
-	            	//200-300
-	                return response;
-	            },
-	            'responseError': function (rejection) {
-	            	if(isError(rejection.status)) {	            		
-	            		location.href = 'login.jsp';
-	            	}
-	                return $q.reject(rejection);
-	            }
-	        };
-	    }]);
+		$httpProvider.interceptors.push(['$q',function ($q) {
+			var isError = function(code) {
+				var codeStr = "" + code;
+				return codeStr.indexOf('4') === 0 || codeStr.indexOf('5') === 0;
+			};
+			
+			return {
+				'response': function (response) {
+					//200-300
+					return response;
+				},
+				'responseError': function (rejection) {
+					if(isError(rejection.status)) {
+						location.href = 'login.jsp';
+					}
+					return $q.reject(rejection);
+				}
+			};
+		}]);
 		
 		//ISSUE: missing hash prefix solved (occurs when the user changes the URL in der address bar manually)
 		var arr = $logProvider.$get;
@@ -76,8 +75,8 @@
 				$scope.sessionId = sessId;
 				
 				//cookies disabled...
-				$http.defaults.headers.common['JSESSIONID'] = sessId;
-				$http.defaults.headers.common['login'] = login;				
+				$http.defaults.headers.common.JSESSIONID = sessId;
+				$http.defaults.headers.common.login = login;				
 			}
 		};
 	}]);
