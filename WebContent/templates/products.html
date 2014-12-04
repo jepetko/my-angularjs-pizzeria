@@ -4,7 +4,7 @@
 			<img data-ng-src="img/{{p.name | lowercase | nospaces}}.png" alt="{{p.name}}">		
 			<div class="caption">
 				<h4>{{p.name | translate}}</h4>
-				<input data-ng-model="bag[p.id]" class="r-a price"></input>			
+				<input type="number" data-ng-model="bag[p.id]" class="r-a price" data-validnumber></input>
 			</div>
 		</div>
 	</div>

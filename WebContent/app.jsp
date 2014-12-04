@@ -19,12 +19,13 @@
 	}
 	
 	//environment
-	boolean prod = true;
+	boolean prod = false;
 %>
 <!DOCTYPE html>
 <html id="main">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">		
 		<title data-translate>My Awesome Pizzeria</title>
 			
 		<% if(prod) { %>
@@ -54,6 +55,8 @@
 	      	<script src="js/app/shopping/ProductsCtrl.js"></script>
 			<script src="js/app/shopping/ShoppingBagCtrl.js"></script>
 			<script src="js/app/shopping/WizardDirective.js"></script>
+			<script src="js/app/shopping/Validators.js"></script>
+			
 			<script src="js/app/shopping/ShoppingApp.js"></script>	
 			<script src="js/app/shopping/AddressCtrl.js"></script>			
 			<script src="js/app/shopping/FinishCtrl.js"></script>			
@@ -115,8 +118,8 @@
 		<div class="panel panel-default">		
 			<div class="panel-heading" data-translate>Please, use this wizard to order some pizzas.</div>
 			<div class="panel-body">
-				<wizard c="getOrderCount()"></wizard>
-				<ng-view></ng-view>
+				<x-wizard c="getOrderCount()"></x-wizard>
+				<x-ng-view></x-ng-view>
 				<div class="panel panel-default">
 		  			<div class="panel-body copyright-body">
 			  				&copy; leanetic IT Consulting, {{'all rights reserved' | translate}}		  						

@@ -7,7 +7,12 @@ body {
 }
 
 .r-a {
-	text-align: right;
+	text-align: center;
+}
+
+.price {
+	font-size: 16pt;
+	font-weight: bold;
 }
 
 tfoot {

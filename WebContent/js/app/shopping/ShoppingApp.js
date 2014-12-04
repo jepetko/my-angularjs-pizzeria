@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	angular.module('shopping-app', ['ngRoute', 'wizard-components', 'products-app', 'shoppingbag-app', 'address-app', 'finish-app', 'orders-app'])
+	angular.module('shopping-app', ['ngRoute', 'wizard-components', 'validators', 'products-app', 'shoppingbag-app', 'address-app', 'finish-app', 'orders-app'])
 	.config(['$httpProvider', '$routeProvider', '$locationProvider', '$logProvider', function($httpProvider, $routeProvider, $locationProvider, $logProvider) {
 		
 		$httpProvider.interceptors.push(['$q',function ($q) {
