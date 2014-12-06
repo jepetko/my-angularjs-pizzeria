@@ -59,8 +59,7 @@ describe('finish-app', function() {
 			_OrdersService.bag['1'] = 3;
 			_OrdersService.bag['2'] = 5;
 			
-			expect($scope.createMessage()).toEqual('Thank you for your order. Here is the summary: ');	
-			expect($scope.createProductsSummaryMessage()).toEqual('3x Margharita, 5x Cardinale.');
+			expect($scope.createMessage()).toEqual('Thank you for your order. Here is the summary: 3x Margharita, 5x Cardinale.');	
 		});
 	});
 });

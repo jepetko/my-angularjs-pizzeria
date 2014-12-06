@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 	
-	angular.module('wizard-components',[])
+	angular.module('wizard-components',['orders-services'])
 	.directive('wizard', ['$rootScope', '$location', 'OrdersService', 'StringUtils', function($rootScope, $location, OrdersService, StringUtils) {
 		
 		var link = function(scope, el, attrs) {
