@@ -16,4 +16,7 @@ angular.module('shared', ['ngCookies'])
 		}
 		return str.replace(/^\s+/g,'').replace(/\s+$/,'');
 	};
+	this.endsWith = function(str, suffix) {
+		return str.indexOf(suffix, str.length - suffix.length) !== -1;
+	};
 }]);

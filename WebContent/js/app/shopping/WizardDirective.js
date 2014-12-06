@@ -2,7 +2,7 @@
 	"use strict";
 	
 	angular.module('wizard-components',[])
-	.directive('wizard', ['$rootScope', '$location', function($rootScope, $location) {
+	.directive('wizard', ['$rootScope', '$location', 'OrdersService', 'StringUtils', function($rootScope, $location, OrdersService, StringUtils) {
 		
 		var link = function(scope, el, attrs) {
 
@@ -39,7 +39,7 @@
 					return label == 'Orders';
 				};
 				
-				$rootScope.$on('$locationChangeSuccess', function(newState, oldState) {					
+				$rootScope.$on('$locationChangeSuccess', function(oldState, newState) {					
 					var path = $location.path();
 					angular.forEach($scope.pages, function(el) {
 						if(path === el.link.replace(/^#!/,'')) {
@@ -48,6 +48,11 @@
 							el.css = '';
 						}
 					});
+					if(StringUtils.endsWith(newState, '#!/select') || StringUtils.endsWith(newState, '#!/bag') || StringUtils.endsWith(newState, '#!/address')) {
+						if(OrdersService.isCurrentOrderSent()) {
+							OrdersService.resetCurrentOrder();	
+						}						
+					}
 				});
 			}],
 			restrict: 'E',	

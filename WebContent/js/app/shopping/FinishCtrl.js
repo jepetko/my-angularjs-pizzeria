@@ -2,10 +2,9 @@
 	"use strict";
 	
 	angular.module('finish-app', ['products-services', 'orders-services'])
-	.controller('FinishCtrl', ['$scope', '$filter', 'OrdersService', 'ProductsService', function($scope, $filter, OrdersService, ProductsService) {
+	.controller('FinishCtrl', ['$scope', 'OrdersService', 'ProductsService', function($scope, OrdersService, ProductsService) {
 		
 		$scope.products = ProductsService.getProducts();
-		$scope.msg = '';
 		
 		$scope.getProductName = function(id) {
 			var name = null;
@@ -17,11 +16,8 @@
 			return name;
 		};
 		
-		$scope.createMessage = function() {
-			if(OrdersService.isBagEmpty()) {
-				return $filter('translate')('Your bag is empty. Please add some pizzas to your bag.');
-			}
-			var msg = $filter('translate')('Thank you for your order. Here is the summary: ');
+		$scope.createProductsSummaryMessage = function() {
+			var msg = '';
 			var bag = OrdersService.getBag();
 			var i=0;
 			for(var itm in bag) {
@@ -31,14 +27,19 @@
 				var count = bag[itm];
 				msg += count + 'x ' + $scope.getProductName(itm);
 				i++;
-			}
-			OrdersService.clearBag();
+			}			
 			return msg + '.';
 		};
 		
-		$scope.init = function() {
-			$scope.msg = $scope.createMessage();
-		};		
+		$scope.createMessage = function() {			
+			if(OrdersService.isBagEmpty() || !OrdersService.isAddressValid()) {
+				return 'Your bag is empty or the address invalid. Please add some pizzas to your bag and complete your address data.';
+			}
+			if(!OrdersService.isCurrentOrderSent()) {
+				return "Your order hasn't been sent yet. Please press the 'Done!' button!";
+			}
+			return 'Thank you for your order. Here is the summary: ' + this.createProductsSummaryMessage();
+		};
 	}]);
 	
 })();

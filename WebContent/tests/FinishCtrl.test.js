@@ -7,12 +7,22 @@ describe('finish-app', function() {
 	
 	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, OrdersService, ProductsService) {
 		$scope = $rootScope.$new();
+		
 		ctrl = $controller('FinishCtrl', {
 			'$scope' : $scope,
 			'OrdersService': OrdersService,
 			'ProductsService' : ProductsService
 		});
 		_OrdersService = OrdersService;
+		
+		//emulate valid address and confirmation...
+		_OrdersService.isAddressValid = function() {
+			return true;
+		};
+		_OrdersService.isCurrentOrderSent = function() {
+			return true;
+		};		
+		
 		_ProductsService = ProductsService;
 		
 		_$httpBackend_.whenGET('payment/orders').respond(200, [ {
@@ -40,7 +50,7 @@ describe('finish-app', function() {
 		
 		it('should print a hint if the bag is empty', function() {
 			$httpBackend.flush();
-			expect($scope.createMessage()).toEqual('Your bag is empty. Please add some pizzas to your bag.');
+			expect($scope.createMessage()).toEqual('Your bag is empty or the address invalid. Please add some pizzas to your bag and complete your address data.');
 		});
 		
 		it('should return message to the user including the order summary', function() {
@@ -49,10 +59,8 @@ describe('finish-app', function() {
 			_OrdersService.bag['1'] = 3;
 			_OrdersService.bag['2'] = 5;
 			
-			expect($scope.createMessage()).toEqual('Thank you for your order. Here is the summary: 3x Margharita, 5x Cardinale.');	
-			
-			//should have cleared the shopping bag..
-			expect(_OrdersService.isBagEmpty()).toBe(true);
+			expect($scope.createMessage()).toEqual('Thank you for your order. Here is the summary: ');	
+			expect($scope.createProductsSummaryMessage()).toEqual('3x Margharita, 5x Cardinale.');
 		});
 	});
 });

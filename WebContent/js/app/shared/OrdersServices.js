@@ -6,7 +6,10 @@
 		return $resource('payment/orders/:id', null, { save : {method: 'POST'} });
 	}])
 	.service('OrdersService', ['Orders', 'StringUtils', '$timeout', function(Orders, StringUtils, $timeout) {
-		this.address = {};
+		this.address = {};		
+		this.addressValid = false;	
+		this.currentOrderSent = false;
+		
 		this.bag = {};
 		this.orders = [];
 		
@@ -21,8 +24,9 @@
 			return this.bag;
 		};
 		
-		this.clearBag = function() {
+		this.resetCurrentOrder = function() {
 			this.bag = {};
+			this.currentOrderSent = false;
 		};
 		
 		this.isBagEmpty = function() {
@@ -30,6 +34,17 @@
 				return false;
 			}
 			return true;
+		};
+		
+		this.setAddressValid = function(valid) {
+			this.addressValid = valid;
+		};
+		this.isAddressValid = function() {
+			return this.addressValid;
+		};
+		
+		this.isCurrentOrderSent = function() {
+			return this.currentOrderSent;
 		};
 		
 		this.getPendingOrders = function() {
@@ -53,6 +68,7 @@
 			
 			Orders.save(order, (function(self) {
 				return function(data) {
+					self.currentOrderSent = true;
 					self.getPendingOrders();
 				};				
 			})(this));

@@ -31,7 +31,7 @@
 				"Tonno": "Tonno",
 				"Quattro Stagioni":"Quattro Stagioni",
 				"Family Pizza": "Familien-Pizza",
-				"Your bag is empty. Please add some pizzas to your bag.":"Ihr Einkaufskorb ist leer. Bitte, fügen Sie Pizzen hinzu.",
+				"Your bag is empty or the address invalid. Please add some pizzas to your bag and complete your address data.":"Ihr Einkaufskorb ist leer oder die Adresse nicht korrekt. Bitte, fügen Sie Pizzen hinzu bzw. vervollständigen Sie die Adresse.",
 				"User": "Benutzer",
 				"Logout": "Ausloggen",
 				"VISA": "VISA",
@@ -43,7 +43,8 @@
 				"English": "Englisch",
 				"No orders so far.": "Es gibt noch keine Bestelungen.",
 				"Please, add some pizzas to your bag.": "Bitte, f&uuml;gen Sie Pizzen Ihrem Warenkorb hinzu.",
-				"all rights reserved": "alle Rechte vorbehalten"
+				"all rights reserved": "alle Rechte vorbehalten",
+				"Your order hasn't been sent yet. Please press the 'Done!' button!": "Ihre Bestellung ist noch offen. Bestätigen Sie Ihre mit 'Fertig!'."
 			});
 	/* jshint +W100 */
 }]);
