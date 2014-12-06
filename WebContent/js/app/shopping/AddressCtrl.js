@@ -57,7 +57,7 @@
 						var matches = matches(viewValue);
 						ctrl.$setValidity('creditcard', matches);
 						return matches ? viewValue : '';
-					}
+					};
 				})(helper) );
 				scope.$watch('address.payment', function(val) {
 					if(val) {
