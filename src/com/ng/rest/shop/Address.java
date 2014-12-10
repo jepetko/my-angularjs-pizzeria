@@ -1,5 +1,6 @@
 package com.ng.rest.shop;
 
+
 public class Address {
 
 	private String firstname;
@@ -8,8 +9,8 @@ public class Address {
 	private String no;
 	private String zip;
 	private String city;
-	private String payment;
-	private long creditcard;
+	private String payment;	
+	private String creditcard;
 	
 	public Address() {}
 	
@@ -56,11 +57,11 @@ public class Address {
 		this.payment = payment;
 	}	
 	
-	public long getCreditcard() {
+	public String getCreditcard() {
 		return creditcard;
 	}
 
-	public void setCreditcard(long creditcard) {
+	public void setCreditcard(String creditcard) {
 		this.creditcard = creditcard;
 	}	
 }
