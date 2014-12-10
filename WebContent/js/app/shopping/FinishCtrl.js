@@ -28,7 +28,7 @@
 				msg += count + 'x ' + $scope.getProductName(itm);
 				i++;
 			}			
-			return msg + '.';
+			return msg;
 		};
 		
 		$scope.createMessage = function() {			
@@ -38,7 +38,7 @@
 			if(!OrdersService.isCurrentOrderSent()) {
 				return "Your order hasn't been sent yet. Please press the 'Done!' button!";
 			}
-			return 'Thank you for your order. Here is the summary: ' + this.createProductsSummaryMessage();
+			return 'Thank you for your order. Here is the summary: ';
 		};
 	}]);
 	
