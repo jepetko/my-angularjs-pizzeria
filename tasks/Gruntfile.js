@@ -1,6 +1,9 @@
 'use strict';
 
 module.exports = function (grunt) {
+	
+	//uglify encoding
+	grunt.file.defaultEncoding = 'utf-8';
 
     // Project configuration.
     grunt.initConfig({
