@@ -90,6 +90,10 @@
 			return $scope.addressForm.$invalid || $scope.isBagEmpty();
 		};
 		$scope.submit = function() {
+			
+			//bug-fix: re-set the flag
+			OrdersService.setAddressValid($scope.addressForm.$valid);
+			
 			OrdersService.sendOrder();
 			//http://stackoverflow.com/questions/14301524/in-angular-how-to-redirect-with-location-path-as-http-post-success-callback
 			$location.path('/finish');

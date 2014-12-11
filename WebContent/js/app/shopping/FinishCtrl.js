@@ -17,6 +17,9 @@
 		};
 		
 		$scope.createProductsSummaryMessage = function() {
+			if(OrdersService.isBagEmpty() || !OrdersService.isAddressValid() || !OrdersService.isCurrentOrderSent()) {
+				return '';
+			}
 			var msg = '';
 			var bag = OrdersService.getBag();
 			var i=0;
@@ -31,7 +34,7 @@
 			return msg;
 		};
 		
-		$scope.createMessage = function() {			
+		$scope.createMessage = function() {
 			if(OrdersService.isBagEmpty() || !OrdersService.isAddressValid()) {
 				return 'Your bag is empty or the address invalid. Please add some pizzas to your bag and complete your address data.';
 			}
