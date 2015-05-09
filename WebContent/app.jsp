@@ -19,7 +19,7 @@
 	}
 	
 	//environment
-	boolean prod = false;
+	boolean prod = true;
 %>
 <!DOCTYPE html>
 <html id="main">
