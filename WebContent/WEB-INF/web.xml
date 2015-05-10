@@ -8,18 +8,15 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
-    <welcome-file>login.html</welcome-file>   
-    <welcome-file>login.jsp</welcome-file>    
+    <welcome-file>login.html</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-  
-	<listener>
-	    <description>sessionListener</description>
-	    <listener-class>
+  <listener>
+    <description>sessionListener</description>
+    <listener-class>
 	        com.ng.auth.SessionListener
 	    </listener-class>
-	</listener>
-  
-  <!-- products -->
+  </listener>
   <servlet>
     <servlet-name>ProductResource</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
@@ -37,8 +34,6 @@
     <servlet-name>ProductResource</servlet-name>
     <url-pattern>/shop/*</url-pattern>
   </servlet-mapping>
-  
-  <!-- orders -->
   <servlet>
     <servlet-name>OrderResource</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
@@ -55,26 +50,23 @@
   <servlet-mapping>
     <servlet-name>OrderResource</servlet-name>
     <url-pattern>/payment/*</url-pattern>
-  </servlet-mapping>  
-    
-  <!--  login  -->
+  </servlet-mapping>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.ng.auth.LoginServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
-  </servlet>  
+  </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-      <!--  login  -->
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.ng.auth.LogoutServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
-  </servlet>  
+  </servlet>
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
 </web-app>
