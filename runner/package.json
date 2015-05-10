@@ -18,6 +18,7 @@
     "karma-script-launcher": "~0.1.0",
     "karma-spec-reporter": "~0.0.13",
     "karma-story-reporter": "~0.2.2",
-    "grunt-protractor-runner": "~2.0.0"
+    "grunt-protractor-runner": "~2.0.0",
+    "grunt-shell": "~0.7.0"
   }
 }

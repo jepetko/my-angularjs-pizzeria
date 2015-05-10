@@ -29,12 +29,21 @@ module.exports = function(grunt) {
 					// Target-specific arguments 
 				}
 			}
-
-		}
+		},
+		shell: {
+	        startup: {
+	            command: ['cd /opt/tomcat/bin', './startup.sh'].join('&&')
+	        },
+	        shutdown: {
+	        	command: ['cd /opt/tomcat/bin', './shutdown.sh'].join('&&')
+	        }
+	    }		
 	});
 
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-protractor-runner');
+	grunt.loadNpmTasks('grunt-shell');
 
 	grunt.registerTask('default', [ 'karma' ]);
+	grunt.registerTask('specs', [ 'shell:startup', 'protractor:e2e', 'shell:shutdown' ])
 };
