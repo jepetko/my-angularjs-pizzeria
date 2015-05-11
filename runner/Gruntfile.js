@@ -32,10 +32,10 @@ module.exports = function(grunt) {
 		},
 		shell: {
 	        startup: {
-	            command: ['cd /opt/tomcat/bin', './startup.sh'].join('&&')
+	            command: ['cd /opt/tomcat/bin', './catalina.sh jpda run'].join('&&')
 	        },
 	        shutdown: {
-	        	command: ['cd /opt/tomcat/bin', './shutdown.sh'].join('&&')
+	        	command: ['cd /opt/tomcat/bin', './catalina.sh jpda stop'].join('&&')
 	        }
 	    }		
 	});
